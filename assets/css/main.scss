@@ -1,0 +1,217 @@
+---
+# Overriding the dark theme to be custom one
+---
+
+@font-face {
+    font-family: 'IM Fell English';
+    src: url('assets/fonts/IM_Fell_English/imfellenglish-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+$doc-font-size: 16px;
+$doc-font-size-medium: 18px;
+$doc-font-size-large: 20px;
+$doc-font-size-x-large: 22px;
+   
+/* paragraph indention */
+$paragraph-indent: true !default; // true, false (default)
+$indent-var: 1.5em !default;
+   
+/* Modern font stack */
+/* https://github.com/system-fonts/modern-font-stacks */
+   
+/* Sans serif - modern font stack */
+$system-ui: system-ui, sans-serif;
+$humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+$geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+$classical-humanist: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
+$neo-grotesque: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+$industrial: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+$rounded-sans: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+   
+/* sans serif typefaces - defined in Minimal Mistakes */
+$helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
+   
+/* Serif - modern font stack */
+$transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+$old-style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;;
+$monospace-slab-serif: 'Nimbus Mono PS', 'Courier New', monospace;
+$slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+$antique: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+$didone: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+   
+/* serif typefaces - defined in Minimal Mistakes */
+$georgia: Georgia, serif !default;
+$times: Times, serif !default;
+$bodoni: "Bodoni MT", serif !default;
+$calisto: "Calisto MT", serif !default;
+$garamond: Garamond, serif !default;
+   
+/* Monospace - modern font stack */
+$monospace-code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+   
+/* Handwritten - modern font stack */
+$handwritten: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+   
+/* Defaults used in Minimal mistakes */
+$default-sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$default-serif: Georgia, Times, serif;
+$default-monospace: Monaco, Consolas, "Lucida Console", monospace;
+   
+/* Emoji native from modern font stack - add to the end of the font-face for native emojis */
+$emoji-native: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+   
+/* system typefaces */
+$serif: $default-serif !default;
+$sans-serif: $default-sans-serif !default;
+$sans-serif-narrow: $sans-serif !default;
+$monospace: $default-monospace !default;
+   
+$global-font-family: 'EB Garamond', $old-style, $serif;
+$header-font-family: 'IM Fell English SC', 'EB Garamond', $geometric-humanist;
+$monospace: 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace, $monospace-code;
+   
+/* type scale */
+$type-size-1: 2.25em;
+$type-size-2: 1.75em;
+$type-size-3: 1.4em;
+$type-size-4: 1.15em;
+$type-size-5: 1em;
+$type-size-6: 0.875em;
+$type-size-7: 0.75em;
+$type-size-8: 0.625em;
+   
+/* headline scale */
+$h-size-1: 1.75em;
+$h-size-2: 1.5em;
+$h-size-3: 1.25em;
+$h-size-4: 1.125em;
+$h-size-5: 1.0625em;
+$h-size-6: 1em;
+   
+/* Colors */
+$gray: #7a8288 !default;
+$dark-gray: mix(#000, $gray, 50%) !default;
+$darker-gray: mix(#000, $gray, 60%) !default;
+$light-gray: mix(#fff, $gray, 50%) !default;
+$lighter-gray: mix(#fff, $gray, 90%) !default;
+   
+$background-color: #0e1014 !default;
+$code-background-color: #1b1e22 !default;
+$code-background-color-dark: #23272e !default;
+$text-color: #d0cfc7 !default;
+// $muted-text-color: mix(#fff, $text-color, 20%) !default;
+$muted-text-color: #9e9c94 !default;
+$border-color: #383c45 !default;
+$form-background-color: #1d1f23 !default;
+$footer-background-color: #1d1f23 !default;
+
+$primary-color: #b19b70 !default;
+$success-color: #6eae6d !default;
+$warning-color: #d6a45f !default;
+$danger-color: #c04e4e !default;
+$info-color: #4a7d99 !default;
+$focus-color: $primary-color !default;
+$active-color: mix(#fff, $primary-color, 80%) !default;
+
+/* YIQ color contrast */
+$yiq-contrasted-dark-default: $dark-gray !default;
+$yiq-contrasted-light-default: #fff !default;
+$yiq-contrasted-threshold: 175 !default;
+$yiq-debug: false !default;
+   
+/* brands */
+$behance-color: #1769ff !default;
+$bitbucket-color: #205081 !default;
+$bluesky-color: #1083fe !default;
+$dribbble-color: #ea4c89 !default;
+$facebook-color: #3b5998 !default;
+$flickr-color: #ff0084 !default;
+$foursquare-color: #0072b1 !default;
+$github-color: #171516 !default;
+$gitlab-color: #e24329 !default;
+$instagram-color: #517fa4 !default;
+$keybase-color: #ef7639 !default;
+$lastfm-color: #d51007 !default;
+$linkedin-color: #007bb6 !default;
+$mastodon-color: #2b90d9 !default;
+$pinterest-color: #cb2027 !default;
+$reddit-color: #ff4500 !default;
+$rss-color: #fa9b39 !default;
+$soundcloud-color: #ff3300 !default;
+$stackoverflow-color: #fe7a15 !default;
+$tumblr-color: #32506d !default;
+$twitter-color: #55acee !default;
+$vimeo-color: #1ab7ea !default;
+$vine-color: #00bf8f !default;
+$youtube-color: #bb0000 !default;
+$xing-color: #006567 !default;
+   
+/* links */
+$link-color: #8db9ca !default;
+$link-color-hover: #b3d9e1 !default;
+$link-color-visited: #cab0e8 !default;
+$masthead-link-color: $primary-color !default;
+$masthead-link-color-hover: lighten($primary-color, 10%) !default;
+$navicon-link-color-hover: lighten($primary-color, 25%) !default;
+   
+/* notices */
+$notice-background-mix: 80% !default;
+$code-notice-background-mix: 90% !default;
+   
+/* syntax highlighting (base16) */
+$base00: #0f1115 !default;
+$base01: #181a1e !default;
+$base02: #22262b !default;
+$base03: #565f6a !default;
+$base04: #a6b0be !default;
+$base05: #dce1e9 !default;
+$base06: #f2f3f5 !default;
+$base07: #ffffff !default;
+$base08: #cd6660 !default; /* keyword */
+$base09: #e69d6b !default; /* numeric */
+$base0a: #f0c674 !default; /* string */
+$base0b: #93c47d !default; /* literal */
+$base0c: #76c7c0 !default; /* class/type */
+$base0d: #82aaff !default; /* function */
+$base0e: #c792ea !default; /* built-in */
+$base0f: #f78c6c !default; /* special */
+   
+/* Breakpoints */
+$small: 600px !default;
+$medium: 768px !default;
+$medium-wide: 900px !default;
+$large: 1024px !default;
+$x-large: 1280px !default;
+$max-width: $x-large !default;
+   
+/* Grid */
+$right-sidebar-width-narrow: 200px !default;
+$right-sidebar-width: 300px !default;
+$right-sidebar-width-wide: 400px !default;
+   
+/* Other */
+$border-radius: 2px !default;
+$box-shadow: 0 0 4px rgba(0, 0, 0, 0.6) !default;
+$nav-height: 2.5em !default;
+$nav-toggle-height: 2rem !default;
+$navicon-width: 1.5rem !default;
+$navicon-height: 0.25rem !default;
+$global-transition: all 0.3s ease-in-out !default;
+$intro-transition: intro 0.3s both !default;
+
+@import "minimal-mistakes/skins/dirt";
+@import "minimal-mistakes";
+
+/*custom CSS below */
+// :not(pre) > code {
+//   background-color: #3a3a3a !important;
+//   color: #d0d0d0 !important; 
+//   padding: 0.2em 0.4em;
+//   border-radius: 4px;
+//   font-family: 'Fira Code', monospace;
+//   font-size: 0.9em;
+// }
+

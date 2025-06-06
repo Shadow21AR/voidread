@@ -1,9 +1,11 @@
 main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title: "About"
-    url: /about/
+  - title: "Exploration Log"
+    url: "/"
+  - title: "Linux"
+    url: "/linux/"
+  - title: "Windows"
+    url: "/windows/"
+  - title: "All Posts"
+    url: "/all_posts/"
+  - title: "AD Mindmap"
+    url: "/ad-mindmap/"
