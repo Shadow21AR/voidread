@@ -1,0 +1,120 @@
+title: voidread
+email:
+description: >-
+  Welcome to my digital diary of tech tomfoolery and cybersecurity shenanigans! Here you'll find tales of my coding capers, from 'sudo make me a sandwich' moments to 'why is this working in dev but not in prod?' mysteries. I write about cybersecurity because I like to break things (ethically, of course), Linux because I enjoy pain, and random tech stuff because I can't help myself.
+  No, I won't fix your printer (seriously, have you tried turning it off and on again?). Yes, I do Google error messages before I try anything else. No, I don't know why your internet is down (but it's probably DNS).
+  Join me as I navigate the wild world of technology, one segfault at a time. May your code compile on the first try and your coffee never go cold. P.S. If you're my mom, yes, I'm a 'computer genius' but no, I can't recover those family photos from 2007.
+
+github_username: shadow21ar
+minimal_mistakes_skin: "dirt"
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /blog/page:num/
+timezone: Asia/Kolkata
+enable_copy_code_button: true
+
+# Default configuration for all content
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: splash
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      css: "/assets/css/main.scss"
+
+  - scope:
+      path: ""
+      type: ad
+    values:
+      layout: splash
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      css: "/assets/css/main.scss"
+
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: splash
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      css: "/assets/css/main.scss"
+
+  - scope:
+      path: ""
+    values:
+      layout: splash
+      author_profile: false
+      read_time: true
+      share: true
+      related: true
+      css: "/assets/css/main.scss"
+
+# Markdown and theme
+markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    span:
+      class: highlight
+
+remote_theme: mmistakes/minimal-mistakes
+
+# Search
+search: true
+
+# Collections
+collections:
+  ad:
+    output: true
+    permalink: /ad/:path/
+    sort_by: title
+    sort_order: ascending
+
+# Include folders
+include:
+  - _pages
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Plugins allowed by GitHub Pages
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+
+# Author & footer
+author:
+  name: "sado"
+  avatar: "/assets/images/bio-photo.jpeg"
+  bio: "I'm sado, a Cyber Security Engineer specializing in penetration testing and offensive security. Voidread is where I share my notes, writeups, and practical insights from real-world assessments and research"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://shadow21ar.github.io/voidread"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/shadow21ar"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/shadow21ar"
