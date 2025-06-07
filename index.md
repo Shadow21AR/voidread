@@ -1,10 +1,12 @@
 ---
-layout: single
-title: "Exploration Log"
+layout: splash
+title: "Home"
 permalink: /
-author_profile: true
 ---
-<blockquote id="quote-box"></blockquote>
+<div class="banner-box" style="background-color: #1a1a1a; border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h1 style="color: #d4ba91; margin: 0 0 1rem 0; font-size: 2.5rem; font-weight: bold;">voidread</h1>
+  <p id="quote-box" style="color: #9f9585; font-style: italic; margin: 0; font-size: 1.2rem;"></p>
+</div>
 
 <script>
   const quotes = [
@@ -21,19 +23,14 @@ author_profile: true
   ];
 
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
-  document.getElementById("quote-box").innerText = `“${quote}”`;
+  document.getElementById("quote-box").textContent = `${quote}`;
 </script>
-
 
 Welcome to **Voidread** — a place where knowledge grows, ideas take shape, and mysteries unfold.
 
 ### 🔍 Explore:
-- 🐧 [Linux](/linux/) — For linux related posts.
-- 🪟 [Windows](/windows/) — For windows related posts.
-- 🧠 [AD Mindmap](/ad-mindmap/) — Your full reference to Active Directory.
-
----
-
-Feel free to explore the [Sealed Records](/posts/) for archived posts, or dive into any section that calls.
+- 🐧 [Linux]({{ '/linux/' | relative_url }}) — For linux related posts.
+- 🪟 [Windows]({{ '/windows/' | relative_url }}) — For windows related posts.
+- 🧠 [AD Mindmap]({{ '/ad-mindmap/' | relative_url }}) — Your full reference to Active Directory.
 
 ---

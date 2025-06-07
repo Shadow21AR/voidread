@@ -2,6 +2,7 @@
 title: "Crack Hash"
 description: "Crack Hash techniques and commands for Active Directory security assessment."
 ---
+# Crack Hash
 ## LM (299bd128c1101fd6)
 - `john --format=lm hash.txt --wordlist=<rockyou.txt>`
 - `hashcat -m 3000 -a 0 hash.txt <rockyou.txt>`

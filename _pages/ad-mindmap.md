@@ -3,15 +3,13 @@ layout: splash
 title: Active Directory Mindmap
 permalink: /ad-mindmap/
 ---
+# Active Directory Mindmap
 
-# 🧠 Active Directory Mindmap
+Explore various aspects of Active Directory through the sections below or [visit the external AD mindmap](https://shadow21ar.github.io/AD-mindmap){:target="_blank" rel="noopener noreferrer"}.
 
-Explore various aspects of Active Directory through the sections below or  
-[visit the external AD mindmap](https://shadow21ar.github.io/AD-mindmap){:target="_blank" rel="noopener noreferrer"}.
-
-<div class="mindmap-grid">
+<div class="post-grid">
   {% assign ad_manifest = site.data.ad_manifest %}
-  {% assign ad_pages = site.pages | where_exp: "p", "p.path contains 'ad/'" %}
+  {% assign ad_pages = site.ad %}
 
   {% for entry in ad_manifest %}
     {% assign matched = nil %}
@@ -22,10 +20,12 @@ Explore various aspects of Active Directory through the sections below or
       {% endif %}
     {% endfor %}
     {% if matched %}
-      <a href="{{ matched.url | relative_url }}" target="_blank" rel="noopener noreferrer" class="mindmap-box">
-        <div class="mindmap-title">{{ entry.title }}</div>
-        <div class="mindmap-description">{{ matched.description }}</div>
-      </a>
+      <div class="post-card">
+        <a href="{{ matched.url | relative_url }}" target="_blank" rel="noopener noreferrer">
+          <div class="post-title">{{ entry.title }}</div>
+          <div class="post-excerpt">{{ matched.description }}</div>
+        </a>
+      </div>
     {% endif %}
   {% endfor %}
 </div>

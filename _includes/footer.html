@@ -1,21 +1,160 @@
-<div class="page__footer-follow">
-  <ul class="social-icons">
-    {% if site.data.ui-text[site.locale].follow_label %}
-      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
-    {% endif %}
+<div class="footer-content">
 
+  <div class="page__footer-follow">
+    <ul class="social-icons">
+      {% if site.data.ui-text[site.locale].follow_label %}
+      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <div class="footer-author">
+    {% if site.author.avatar %}
+    <img class="author-avatar" src="{{ site.author.avatar | relative_url }}"
+      alt="{{ site.author.name | default: site.title }}">
+    {% endif %}
+    <div class="author-info">
+      <div class="author-name">{{ site.author.name | default: site.title }}</div>
+      {% if site.author.bio %}
+      <div class="author-bio">{{ site.author.bio }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="page__footer-copyright">
+  <div class="footer-line">
+    &copy; {{ site.time | date: '%Y' }} <a href="{{ site.copyright_url | default: site.url }}">{{ site.copyright | default: site.title }}</a>
+    <span class="footer-separator">|</span>
+    {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }}
+    <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp;
+    <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>
+    
     {% if site.footer.links %}
       {% for link in site.footer.links %}
         {% if link.label and link.url %}
-          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label }}</a></li>
+          <span class="footer-separator">|</span>
+          <a href="{{ link.url }}" rel="nofollow noopener noreferrer">
+            <i class="{{ link.icon | default: 'fab fa-github' }}" aria-hidden="true"></i> {{ link.label }}
+          </a>
         {% endif %}
       {% endfor %}
     {% endif %}
-
+    
     {% unless site.atom_feed.hide %}
-      <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
+      <span class="footer-separator">|</span>
+      <a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}">
+        <i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}
+      </a>
     {% endunless %}
-  </ul>
+  </div>
 </div>
 
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} <a href="{{ site.copyright_url | default: site.url }}">{{ site.copyright | default: site.title }}</a>. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<style>
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.85em;
+  }
+
+  .footer-about {
+    flex: 1;
+    min-width: 0;
+    color: #9f9585;
+    line-height: 1.4;
+  }
+
+  .footer-about__text {
+    margin: 0;
+    font-style: italic;
+  }
+
+  .footer-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #3a3a3a;
+    width: 100%;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-name {
+    font-weight: bold;
+    color: #d4ba91;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-bio {
+    font-size: 0.85em;
+    color: #9f9585;
+    line-height: 1.4;
+  }
+
+  .page__footer-copyright {
+    font-size: 0.7em;
+    color: #7a7365;
+    text-align: center;
+    padding: 0.25rem 0;
+  }
+  
+  .footer-line {
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 0.25rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    line-height: 1.2;
+  }
+  
+  .footer-line::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .footer-separator {
+    color: #5a5345;
+    margin: 0 0.5rem;
+  }
+  
+  .page__footer-copyright a {
+    color: #d4ba91;
+    text-decoration: none;
+  }
+  
+  .page__footer-copyright a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .footer-about {
+      order: 1;
+      margin-top: 0.5rem;
+    }
+  }
+</style>

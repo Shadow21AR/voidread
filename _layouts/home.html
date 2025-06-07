@@ -4,8 +4,7 @@ layout: archive
 
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-
+<h1 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h1>
 {% if paginator %}
   {% assign posts = paginator.posts %}
 {% else %}
@@ -13,8 +12,16 @@ layout: archive
 {% endif %}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% include documents-collection.html entries=posts type=entries_layout %}
+<div class="post-grid">
+  {% for post in site.posts %}
+      <div class="post-card">
+        <a href="{{ post.url | relative_url }}">
+          <div class="post-title">{{ post.title }}</div>
+          <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+          <div class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</div>
+        </a>
+      </div>
+  {% endfor %}
 </div>
 
 {% include paginator.html %}

