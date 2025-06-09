@@ -1,5 +1,6 @@
 ---
 title: "CEH v13 Engage"
+description: "CEH v13 Engage solutions"
 date: 2025-06-06T10:00:00+05:30
 categories:
   - linux

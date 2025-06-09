@@ -13,7 +13,7 @@ Browse all posts related to Windows:
         <a href="{{ post.url | relative_url }}">
           <div class="post-title">{{ post.title }}</div>
           <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-          <div class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</div>
+          <div class="post-excerpt">{{ post.description | strip_html | truncate: 120 }}</div>
         </a>
       </div>
     {% endif %}

@@ -2,67 +2,7 @@
 # Overriding the dark theme to be custom one
 ---
 
-// Import Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap');
-
-// Base font for body text
-body {
-  font-family: 'Crimson Text', serif;
-  line-height: 1.6;
-  color: #9f9585; /* Warm matte text color */
-}
-
-/* Ensure all text elements inherit the base color */
-p, li, td, th, label, input, textarea, select, .page__content, .page__meta, .archive__item-excerpt {
-  color: inherit;
-}
-
-/* Headings color */
-h1, h2, h3, h4, h5, h6,
-.page__title,
-.archive__item-title,
-.toc__title {
-  color: #d4ba91; /* Warm gold for headings */
-}
-
-// h1 with IM Fell English
-h1,
-.page__title {
-  font-family: 'IM Fell English', serif;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-}
-
-// h2 with Crimson Text (forced)
-h2, h3, h4, h5, h6,
-.archive__item-title,
-.toc__title {
-  font-family: 'Crimson Text', serif !important;
-  font-weight: 600 !important;
-  line-height: 1.3 !important;
-  margin: 1.5em 0 0.5em !important;
-}
-
-// Navigation with IM Fell English and Uppercase
-.masthead,
-.masthead__menu,
-.masthead__menu-item,
-.greedy-nav,
-.greedy-nav a,
-.nav__list,
-.nav__title,
-.nav__sub-title,
-.nav__item,
-.nav__link {
-  font-family: 'IM Fell English', serif;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=IM+Fell+English:ital@0;1&family=Rock+Salt&family=Cabin+Sketch&family=Patrick+Hand&display=swap');
 
 $doc-font-size: 16px;
 $doc-font-size-medium: 18px;
@@ -71,100 +11,37 @@ $doc-font-size-x-large: 22px;
 
 $paragraph-indent: true !default;
 $indent-var: 1.5em !default;
-
-/* Sans serif - modern font stack */
-$system-ui: system-ui, sans-serif;
-$humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
-$geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-$classical-humanist: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
-$neo-grotesque: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-$industrial: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
-$rounded-sans: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
    
-/* sans serif typefaces - defined in Minimal Mistakes */
-$helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
-   
-/* Serif - modern font stack */
-$transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-$old-style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;;
-$monospace-slab-serif: 'Nimbus Mono PS', 'Courier New', monospace;
-$slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
-$antique: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
-$didone: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
-   
-/* serif typefaces - defined in Minimal Mistakes */
-$georgia: Georgia, serif !default;
-$times: Times, serif !default;
-$bodoni: "Bodoni MT", serif !default;
-$calisto: "Calisto MT", serif !default;
-$garamond: Garamond, serif !default;
-   
-/* Monospace - modern font stack */
-$monospace-code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-   
-/* Handwritten - modern font stack */
-$handwritten: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
-   
-/* Defaults used in Minimal mistakes */
-$default-sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$default-serif: Georgia, Times, serif;
-$default-monospace: Monaco, Consolas, "Lucida Console", monospace;
-   
-/* Emoji native from modern font stack - add to the end of the font-face for native emojis */
-$emoji-native: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-   
-/* system typefaces */
-$serif: $default-serif !default;
-$sans-serif: $default-sans-serif !default;
-$sans-serif-narrow: $sans-serif !default;
-$monospace: $default-monospace !default;
-
-// Ensure all headings use the IM Fell English font
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'IM Fell English', serif;
-  font-weight: normal;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-}
-   
-// Set global fonts
-$global-font-family: 'Crimson Text', $old-style, serif;
-$header-font-family: 'IM Fell English', serif;
-$monospace: 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace, $monospace-code;
-   
-/* type scale */
-$type-size-1: 2.25em;
-$type-size-2: 1.75em;
-$type-size-3: 1.4em;
+$type-size-1: 2em;
+$type-size-2: 1.6em;
+$type-size-3: 1.35em;
 $type-size-4: 1.15em;
-$type-size-5: 1em;
-$type-size-6: 0.875em;
-$type-size-7: 0.75em;
-$type-size-8: 0.625em;
+$type-size-5: 1.05em;
+$type-size-6: 0.95em;
+$type-size-7: 0.85em;
+$type-size-8: 0.75em;
 
-$h-size-1: 1.75em;
-$h-size-2: 1.5em;
-$h-size-3: 1.25em;
-$h-size-4: 1.125em;
-$h-size-5: 1.0625em;
+$h-size-1: 1.85em;
+$h-size-2: 1.6em;
+$h-size-3: 1.4em;
+$h-size-4: 1.2em;
+$h-size-5: 1.1em;
 $h-size-6: 1em;
    
-/* Colors */
 $gray: #7a8288 !default;
 $dark-gray: mix(#000, $gray, 50%) !default;
 $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
    
-/* Warm Matte Theme Colors */
-$background-color: #1a1816 !default;
-$text-color: #d6cfc2 !default;
-$muted-text-color: #9f9585 !default;
-$border-color: #3a322b !default;
-$form-background-color: #1c1b18 !default;
-$footer-background-color: #1c1b18 !default;
+$background-color: #F1E9D2 !default;
+$text-color: #4B3621 !default;
+$muted-text-color: #8B3A3A !default;
+$border-color: #C5B99A !default;
+$form-background-color: #2C2A24 !default;
+$footer-background-color: background-color !default;
 
-$primary-color: #aa8f5c !default;
+$primary-color: $text-color !default;
 $success-color: #6d866d !default;
 $warning-color: #d8a657 !default;
 $danger-color: #b2554c !default;
@@ -172,57 +49,20 @@ $info-color: #b8875a !default;
 $focus-color: $primary-color !default;
 $active-color: lighten($primary-color, 20%) !default;
 
-$code-background-color: #1e1f26 !default;
+$code-background-color: #eae3d2 !default;
 $code-background-color-dark: #2d2a24 !default;
-
-/* YIQ color contrast */
-$yiq-contrasted-dark-default: $dark-gray !default;
-$yiq-contrasted-light-default: #fff !default;
-$yiq-contrasted-threshold: 175 !default;
-$yiq-debug: false !default;
    
-/* brands */
-$behance-color: #1769ff !default;
-$bitbucket-color: #205081 !default;
-$bluesky-color: #1083fe !default;
-$dribbble-color: #ea4c89 !default;
-$facebook-color: #3b5998 !default;
-$flickr-color: #ff0084 !default;
-$foursquare-color: #0072b1 !default;
-$github-color: #171516 !default;
-$gitlab-color: #e24329 !default;
-$instagram-color: #517fa4 !default;
-$keybase-color: #ef7639 !default;
-$lastfm-color: #d51007 !default;
-$linkedin-color: #007bb6 !default;
-$mastodon-color: #2b90d9 !default;
-$pinterest-color: #cb2027 !default;
-$reddit-color: #ff4500 !default;
-$rss-color: #fa9b39 !default;
-$soundcloud-color: #ff3300 !default;
-$stackoverflow-color: #fe7a15 !default;
-$tumblr-color: #32506d !default;
-$twitter-color: #55acee !default;
-$vimeo-color: #1ab7ea !default;
-$vine-color: #00bf8f !default;
-$youtube-color: #bb0000 !default;
-$xing-color: #006567 !default;
-   
-/* links */
-$link-color: #bca88c !default;
+$link-color: #8B3A3A !default;
 $link-color-hover: lighten($link-color, 8%) !default;
-$link-color-visited: #c0a790 !default;
+$link-color-visited: lighten($link-color, 15%) !default;
 
-/* masthead */
-$masthead-link-color: $primary-color !default;
+$masthead-link-color: $text-color !default;
 $masthead-link-color-hover: lighten($primary-color, 10%) !default;
 $navicon-link-color-hover: lighten($primary-color, 25%) !default;
    
-/* notices */
 $notice-background-mix: 80% !default;
 $code-notice-background-mix: 90% !default;
    
-/* syntax highlighting (base16) */
 $base00: #0f1115 !default;
 $base01: #1a1d23 !default;
 $base02: #242a31 !default;
@@ -239,39 +79,205 @@ $base0c: #22d3ee !default;
 $base0d: #818cf8 !default;
 $base0e: #e879f9 !default;
 $base0f: #fb7185 !default; 
-   
-/* Breakpoints */
-$small: 600px !default;
-$medium: 768px !default;
-$medium-wide: 900px !default;
-$large: 1024px !default;
-$x-large: 1280px !default;
-$max-width: $x-large !default;
-   
-/* Grid */
-$right-sidebar-width-narrow: 200px !default;
-$right-sidebar-width: 300px !default;
-$right-sidebar-width-wide: 400px !default;
-   
-/* Other */
-$border-radius: 4px !default;
-$box-shadow: 0 0 4px rgba(0, 0, 0, 0.6) !default;
-
-$nav-height: 2.5em !default;
-$nav-toggle-height: 2rem !default;
-
-$navicon-width: 1.5rem !default;
-$navicon-height: 0.25rem !default;
-
-$global-transition: all 0.3s ease-in-out !default;
-$intro-transition: intro 0.3s both !default;
-
-$post-title-color: #d4ba91 !default;
 
 @import "minimal-mistakes/skins/dirt";
 @import "minimal-mistakes";
 
-/* custom post grid */
+body {
+  position: relative;
+  background-color: $background-color;
+  color: $text-color;
+  font-family: 'Patrick Hand', serif;
+  font-size: 18px;
+  line-height: 1.75;
+  padding: 2rem;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url({{'/assets/images/bg.png' | relative_url}});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+}
+
+section.page__content {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05)),
+    url({{ '/assets/images/page.jpg' | relative_url }});
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(107, 81, 59, 0.4);
+  position: relative;
+  z-index: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+nav#site-nav.greedy-nav {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1)),
+  url({{'/assets/images/page.jpg' | relative_url}});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(107, 81, 59, 0.4);
+  overflow: hidden;
+  
+  .site-title {
+    margin-left: 1.5rem;
+  }
+}
+
+.page__footer {
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-author {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba($border-color, 0.5);
+    margin-top: 0.5rem;
+
+    .author-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba($primary-color, 0.3);
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-name {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.2em;
+      color: $primary-color;
+      margin: 0 0 0.5rem;
+    }
+
+    .author-bio {
+      color: $muted-text-color;
+      margin: 0;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+  }
+
+  .page__footer-copyright {
+    text-align: center;
+    font-size: 0.85em;
+    color: $muted-text-color;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba($border-color, 0.3);
+
+    .footer-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-separator {
+      color: $border-color;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: lighten($primary-color, 15%);
+        border-bottom-color: lighten($primary-color, 15%);
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .footer-author {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .author-avatar {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+h1,
+.page__title,
+.page__title a,
+.page__title a:hover,
+.page__title a:active,
+.page__title a:focus,
+.page__title a:visited,
+.page__title a:link {
+  font-family: 'Rock Salt', serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: $text-color;
+}
+
+h2, h3, h4, h5, h6,
+.archive__item-title,
+.toc__title,
+.toc__list,
+.toc__list-item,
+.toc__list-link,
+.toc__list-link:hover,
+.toc__list-link:active,
+.toc__list-link:focus,
+.toc__list-link:visited,
+.toc__list-link:link {
+  font-family: 'Patrick Hand', serif;
+  font-weight: 600;
+}
+
+p,a,li,ul,ol,dl,dt,dd,th,td,table,thead,tfoot,tbody{
+  font-family: 'Cabin Sketch', serif;
+  font-weight: 600;
+}
+
+.fa-search {
+  color: $text-color !important;
+  
+  &:hover {
+    color: lighten($text-color, 15%) !important;
+  }
+}
+
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -280,15 +286,19 @@ $post-title-color: #d4ba91 !default;
 }
   
 .post-card {
-    background-color: #1d1b19;
-    border: 1px solid #332f2a;
-    border-radius: 10px;
-    padding: 1.2rem;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(180, 150, 100, 0.15);
-    color: $text-color;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url({{'/assets/images/page.jpg' | relative_url}});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  color: $text-color;
 }
-  
+
 .post-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 15px rgba(216, 166, 87, 0.3);
@@ -298,12 +308,10 @@ $post-title-color: #d4ba91 !default;
     color: $text-color;
     text-decoration: none;
 }
-  
+
 .post-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: $post-title-color;
+  font-family: 'Patrick Hand', serif !important;
+  font-weight: 600 !important;
 }
   
 .post-date {
@@ -311,93 +319,66 @@ $post-title-color: #d4ba91 !default;
     color: $muted-text-color;
     margin-bottom: 0.6rem;
 }
-  
+
 .post-excerpt {
     font-size: 0.9rem;
-    color: $muted-text-color;
+    color: $text-color;
 }  
 
+/* Highlight Styles */
 .highlight {
-  background-color: rgba(184, 135, 90, 0.15);
-  color: #dac29b;
-  padding: 0.1em 0.25em;
-  border-radius: 3px;
-  font-style: italic;
+  background-color: rgba($muted-text-color, 0.2);
+  color: darken($text-color, 15%);
+  padding: 0.1em 0.6em;
+  border-radius: 4px;
+  font-style: normal;
   white-space: nowrap;
+  border: 1px solid rgba($muted-text-color, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
 }
 
 .highlight-info {
   display: block;
-  background-color: rgba(184, 135, 90, 0.1);
-  color: #dac29b;
-  padding: 0.6em 0.9em;
-  border-left: 3px solid #bca88c;
-  border-radius: 5px;
-  margin: 1em 0;
-  font-style: italic;
-  font-size: 0.95em;
-  position: relative;
+  background-color: rgba(91, 142, 169, 0.15);
+  background-image: linear-gradient(90deg, rgba(91, 142, 169, 0.1), rgba(121, 172, 199, 0.2));
+  color: darken(#5b8ea9, 15%);
+  padding: 1.2em 1.5em;
+  border-left: 4px solid #5b8ea9;
+  border-radius: 6px;
+  margin: 1.8em 0;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .highlight-warning {
   display: block;
-  background-color: rgba(216, 166, 87, 0.1);
-  color: #d8a657;
-  border-left: 3px solid #d8a657;
-  padding: 0.6em 1em;
-  border-radius: 5px;
-  margin: 1em 0;
-  font-style: italic;
+  background-color: rgba(216, 166, 87, 0.2);
+  background-image: linear-gradient(90deg, rgba(216, 166, 87, 0.1), rgba(226, 176, 97, 0.25));
+  color: darken(#d8a657, 20%);
+  border-left: 4px solid #d8a657;
+  padding: 1.2em 1.5em;
+  border-radius: 6px;
+  margin: 1.8em 0;
+  font-style: normal;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .highlight-danger {
   display: block;
-  background-color: rgba(178, 85, 76, 0.1);
-  color: #b2554c;
-  border-left: 3px solid #b2554c;
-  padding: 0.6em 1em;
-  border-radius: 5px;
-  margin: 1em 0;
-  font-style: italic;
-}
-
-.highlight-info::before {
-  content: '✧';
-  margin-right: 0.5em;
+  background-color: rgba(178, 85, 76, 0.2);
+  background-image: linear-gradient(90deg, rgba(178, 85, 76, 0.15), rgba(188, 95, 86, 0.25));
+  color: darken(#b2554c, 15%);
+  border-left: 4px solid #b2554c;
+  padding: 1.2em 1.5em;
+  border-radius: 6px;
+  margin: 1.8em 0;
   font-style: normal;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
-.highlight-warning::before {
-  content: '⚠️';
-  margin-right: 0.5em;
-  font-style: normal;
-}
-
-.highlight-danger::before {
-  content: '☠️';
-  margin-right: 0.5em;
-  font-style: normal;
-}
-
-/* Custom code block styling */
-pre.highlight,
-figure.highlight,
-figure.codeblock {
-  background-color: #24211f !important;
-  border-radius: 4px;
-  padding: 1em;
-  margin: 1em 0;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  word-break: break-word;
-  tab-size: 4;
-  font-family: 'Courier New', Courier, monospace;
-  line-height: 1.5;
-  position: relative;
-}
-
-/* Line numbers and code */
 .highlighter-rouge .highlight,
 .highlight pre,
 .highlight .hll {
@@ -409,9 +390,20 @@ figure.codeblock {
   box-shadow: none;
 }
 
-/* Ensure code blocks maintain formatting */
+pre.highlight,
+figure.highlight,
+figure.codeblock {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.75em;
+  margin: 1em 0;
+  overflow-x: auto;
+  font-family: $monospace;
+  color: #e6dccc;
+  line-height: 1.7;
+}
+
 pre > code {
-  white-space: pre-wrap !important;  /* Changed from pre to pre-wrap */
+  white-space: pre-wrap !important;
   word-wrap: break-word;
   word-break: break-all;
   display: block;
@@ -424,33 +416,37 @@ pre > code {
   overflow-wrap: break-word;
 }
 
-/* Inline code*/
 :not(pre) > code {
   padding: 0.2em 0.4em;
   margin: 0 0.2em;
   font-size: 0.9em;
-  background-color: rgba(255, 94, 0, 0.1);
-  border: 1px solid rgba(255, 94, 0, 0.3);
-  border-radius: 3px;
   font-family: $monospace;
-  color: #ff5e00; /* Cyberpunk orange */
-  text-shadow: 0 0 5px rgba(255, 94, 0, 0.3);
-  word-break: break-word;
-  white-space: nowrap;
+  color: #3a2a15;
+  background-color: rgba(150, 120, 70, 0.4);
+  border: 1px solid rgba(107, 81, 59, 0.5);
+  border-radius: 3px;
+  text-shadow: none;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  box-shadow: 0 0 5px rgba(255, 94, 0, 0.1);
+  white-space: nowrap;
 }
 
-/* Hover effect for inline code */
 :not(pre) > code:hover {
-  background-color: rgba(255, 94, 0, 0.15);
-  box-shadow: 0 0 10px rgba(255, 94, 0, 0.3);
-  text-shadow: 0 0 8px rgba(255, 94, 0, 0.5);
+  background-color: rgba(193, 168, 132, 0.4);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Make sure line numbers and code align properly */
 .lineno {
   padding-right: 1em;
   color: #7a7a7a;
   user-select: none;
+}
+
+hr {
+  margin: 2.5em auto;
+  border: 0;
+  height: 5px;
+  background-image: linear-gradient(90deg, transparent, rgba(107, 81, 59, 0.6), transparent);
+  position: relative;
+  overflow: visible;
 }

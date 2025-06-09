@@ -1,5 +1,6 @@
 ---
 title: "Understanding File Upload Vulnerabilities on Windows"
+description: "File upload vulnerabilities occur when a web application allows attackers to upload malicious files without proper validation. On Windows systems, these vulnerabilities can lead to remote code execution, defacement, or data breaches."
 date: 2025-06-06T10:00:00+05:30
 categories:
   - windows

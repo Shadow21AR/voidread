@@ -1,5 +1,6 @@
 ---
 title: "Linux Privilege Escalation via Sudo Misconfiguration"
+description: "Sudo misconfigurations on Linux systems provide a common vector for privilege escalation. Attackers exploit overly permissive sudo rules to gain root-level access."
 date: 2025-06-06T10:00:00+05:30
 categories:
   - linux
