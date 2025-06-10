@@ -3,9 +3,11 @@ layout: splash
 title: "Home"
 permalink: /
 ---
-<div class="banner-box" style="background-color: #1a1a1a; border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-  <h1 style="color: #d4ba91; margin: 0 0 1rem 0; font-size: 2.5rem; font-weight: bold;">voidread</h1>
-  <p id="quote-box" style="color: #9f9585; font-style: italic; margin: 0; font-size: 1.2rem;"></p>
+
+---
+<div class="banner-box" style="text-align: center;">
+  <h1>VOIDREAD</h1>
+  <p id="quote-box"></p>
 </div>
 
 <script>
@@ -25,7 +27,7 @@ permalink: /
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   document.getElementById("quote-box").textContent = `${quote}`;
 </script>
-
+---
 Welcome to **Voidread** — a place where knowledge grows, ideas take shape, and mysteries unfold.
 
 ### 🔍 Explore:
