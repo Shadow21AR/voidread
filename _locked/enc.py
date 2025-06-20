@@ -7,6 +7,7 @@ from yaml import safe_dump
 from slugify import slugify
 from Crypto.Cipher import AES
 from Crypto.Hash import MD5
+import yaml
 
 LOCKED_DIR = "_locked"
 INDEX_PATH = os.path.join(LOCKED_DIR, ".locked_index")
@@ -137,9 +138,21 @@ def process_locked():
         for e in entries:
             idx.write(e + "\n")
 
-    # Rewrite locked.yml completely (safe, no duplication)
+    # Load old metadata if exists
+    old_metadata = []
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r", encoding="utf-8") as yml:
+            old_metadata = yaml.safe_load(yml) or []
+
+    # Build a dictionary to update/merge entries
+    meta_dict = {item['title']: item for item in old_metadata if 'title' in item}
+    for item in metadata:
+        meta_dict[item['title']] = item  # update or insert
+
+    # Dump the merged result
     with open(DATA_FILE, "w", encoding="utf-8") as yml:
-        safe_dump(metadata, yml, sort_keys=False)
+        safe_dump(list(meta_dict.values()), yml, sort_keys=False)
+
 
     print(f"\n{len(entries)} new posts encrypted. Skipped existing.")
 
