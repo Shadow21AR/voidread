@@ -3,6 +3,8 @@ main:
     url: "/linux/"
   - title: "windows"
     url: "/windows/"
+  - title: "locked"
+    url: "/locked/"
   - title: "all posts"
     url: "/all_posts/"
   - title: "active directory"

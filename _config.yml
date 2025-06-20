@@ -79,6 +79,9 @@ collections:
     permalink: /ad/:path/
     sort_by: title
     sort_order: ascending
+  locked:
+    output: true
+    permalink: /locked/:path/
 
 # Include folders
 include:
