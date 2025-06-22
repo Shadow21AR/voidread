@@ -1,0 +1,41 @@
+---
+layout: splash
+permalink: /locked/artificial.html
+---
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<div class="unlock-container">
+  <input id="pw" type="password" placeholder="Enter password" class="unlock-input" autofocus />
+  <button class="unlock-button" onclick="decrypt()">Unlock</button>
+</div>
+<p id="status" class="unlock-error"></p>
+<hr>
+<div id="content"></div>
+
+<script>
+document.getElementById("pw").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") decrypt();
+});
+
+async function decrypt() {
+  const pw = document.getElementById("pw").value;
+  const status = document.getElementById("status");
+  status.textContent = "";
+  try {
+    const res = await fetch("artificial.enc");
+    const encData = await res.text();
+    const raw = CryptoJS.AES.decrypt(encData, pw);
+    const dec = raw.toString(CryptoJS.enc.Utf8);
+    if (!dec) throw "Decryption failed: incorrect password or corrupted file.";
+    const cleaned = dec.replace(/^---[\s\S]*?---\s*/, '');  // strips frontmatter
+    document.querySelector(".unlock-container").style.display = "none";
+    document.getElementById("status").style.display = "none";
+    document.getElementById("content").innerHTML = marked.parse(cleaned);
+
+  } catch (err) {
+    status.textContent = err.toString();
+  }
+}
+</script>
