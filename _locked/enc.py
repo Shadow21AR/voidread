@@ -52,6 +52,9 @@ permalink: /locked/{slug}.html
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/onedark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <div class="unlock-container">
   <input id="pw" type="password" placeholder="Enter password" class="unlock-input" autofocus />
@@ -70,19 +73,70 @@ async function decrypt() {{
   const pw = document.getElementById("pw").value;
   const status = document.getElementById("status");
   status.textContent = "";
-  try {{
+  const wrongPasswordMessages = ["The incantation falters. Try again, Beyonder.","The seal remains unbroken. The key is not right.","Your spirit wavers. That is not the true name.","Reality rejects your attempt. Perhaps a different Sequence?","The door to the fog remains shut."];
+
+    try {{
     const res = await fetch("{enc_filename}");
-    const encData = await res.text();
-    const raw = CryptoJS.AES.decrypt(encData, pw);
-    const dec = raw.toString(CryptoJS.enc.Utf8);
-    if (!dec) throw "Decryption failed: incorrect password or corrupted file.";
-    const cleaned = dec.replace(/^---[\\s\\S]*?---\\s*/, '');  // strips frontmatter
+    const b64 = await res.text();
+
+    const raw = atob(b64);
+    if (!raw.startsWith("Salted__")) throw new Error("Invalid file format.");
+
+    const salt = CryptoJS.enc.Latin1.parse(raw.slice(8, 16));
+    const ciphertext = CryptoJS.enc.Latin1.parse(raw.slice(16));
+
+    const keyiv = CryptoJS.algo.EvpKDF.create({{ keySize: 256 / 32 + 128 / 32, iterations: 1 }}).compute(CryptoJS.enc.Utf8.parse(pw), salt);
+    const key = CryptoJS.lib.WordArray.create(keyiv.words.slice(0, 8));
+    const iv = CryptoJS.lib.WordArray.create(keyiv.words.slice(8, 12));
+
+    const decrypted = CryptoJS.AES.decrypt({{ ciphertext }}, key, {{ iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }});
+
+    const dec = decrypted.toString(CryptoJS.enc.Utf8);
+    if (!dec || !dec.trim().startsWith('---')) {{
+      status.textContent = wrongPasswordMessages[Math.floor(Math.random() * wrongPasswordMessages.length)];
+      return;
+    }}
+
+    const cleaned = dec.replace(/^---[\\s\\S]*?---\\s*/, '');
     document.querySelector(".unlock-container").style.display = "none";
     document.getElementById("status").style.display = "none";
     document.getElementById("content").innerHTML = marked.parse(cleaned);
 
+    document.querySelectorAll('pre code').forEach((block) => {{
+      hljs.highlightElement(block);
+    }});
+    document.querySelectorAll('pre').forEach((pre) => {{
+    const button = document.createElement('button');
+    button.innerHTML = '<span class="sr-only">Copy code</span><i class="far fa-fw fa-copy"></i><i class="fas fa-fw fa-check copied" style="display: none;"></i>';
+    button.title = 'Copy to clipboard';
+    button.onclick = () => {{
+        const code = pre.querySelector('code');
+        navigator.clipboard.writeText(code.innerText).then(() => {{
+        button.querySelector('.copied').style.display = 'inline-block';
+        setTimeout(() => (button.querySelector('.copied').style.display = 'none'), 1200);
+        }}).catch(() => {{
+        button.querySelector('.copied').style.display = 'none';
+        setTimeout(() => (button.querySelector('.copied').style.display = 'none'), 1200);
+        }});
+    }};
+    pre.style.position = 'relative';
+    button.style.position = 'absolute';
+    button.style.top = '0.5rem';
+    button.style.right = '0.5rem';
+    button.style.padding = '2px 6px';
+    button.style.background = '#2a2a2a';
+    button.style.color = '#fff';
+    button.style.border = 'none';
+    button.style.borderRadius = '4px';
+    button.style.fontSize = '0.9em';
+    button.style.cursor = 'pointer';
+    button.style.opacity = '0.7';
+    button.onmouseover = () => button.style.opacity = '1';
+    button.onmouseleave = () => button.style.opacity = '0.7';
+    pre.appendChild(button);
+    }});
   }} catch (err) {{
-    status.textContent = err.toString();
+    status.textContent = wrongPasswordMessages[Math.floor(Math.random() * wrongPasswordMessages.length)];
   }}
 }}
 </script>
@@ -92,7 +146,6 @@ def process_locked():
     entries = []
     metadata = []
 
-    # Load existing passwords to avoid regenerating
     existing = {}
     if os.path.exists(INDEX_PATH):
         with open(INDEX_PATH, "r", encoding="utf-8") as idx:
@@ -103,10 +156,6 @@ def process_locked():
 
     for file in os.listdir(LOCKED_DIR):
         if file.endswith(".md"):
-            if file in existing:
-                print(f"Skipping {file} (already encrypted)")
-                continue
-
             path = os.path.join(LOCKED_DIR, file)
             with open(path, "r", encoding="utf-8") as f:
                 plaintext = f.read()
@@ -116,16 +165,22 @@ def process_locked():
             description = front.get("description", "")
             slug = slugify(title)
 
-            password = secrets.token_urlsafe(24)
-            encrypted = cryptojs_encrypt(plaintext, password)
+            if file in existing:
+                password = existing[file]
+                print(f"Rebuilding {file} using saved password.")
+            else:
+                password = secrets.token_urlsafe(24)
+                entries.append(f"{file}:{password}")
+                print(f"{file} → New password assigned.")
 
+            # Always regenerate .enc and .html
+            encrypted = cryptojs_encrypt(plaintext, password)
             enc_path = os.path.join(LOCKED_DIR, f"{slug}.enc")
             with open(enc_path, "w", encoding="utf-8") as f:
                 f.write(encrypted)
 
             write_decryptor_html(slug, f"{slug}.enc")
 
-            entries.append(f"{file}:{password}")
             metadata.append({
                 "title": title,
                 "description": description
@@ -133,26 +188,19 @@ def process_locked():
 
             print(f"{file} → {slug}.enc + {slug}.html")
 
-    # Append only new entries
     with open(INDEX_PATH, "a", encoding="utf-8") as idx:
         for e in entries:
             idx.write(e + "\n")
-
-    # Load old metadata if exists
     old_metadata = []
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as yml:
             old_metadata = yaml.safe_load(yml) or []
 
-    # Build a dictionary to update/merge entries
     meta_dict = {item['title']: item for item in old_metadata if 'title' in item}
     for item in metadata:
-        meta_dict[item['title']] = item  # update or insert
-
-    # Dump the merged result
+        meta_dict[item['title']] = item
     with open(DATA_FILE, "w", encoding="utf-8") as yml:
         safe_dump(list(meta_dict.values()), yml, sort_keys=False)
-
 
     print(f"\n{len(entries)} new posts encrypted. Skipped existing.")
 

@@ -51,8 +51,8 @@ $doc-font-size-medium: 18px;
 $doc-font-size-large: 20px;
 $doc-font-size-x-large: 22px;
 
-$paragraph-indent: true !default;
-$indent-var: 1.5em !default;
+$paragraph-indent: false;
+$indent-var: 0.5em;
    
 $type-size-1: 2em;
 $type-size-2: 1.6em;
