@@ -41,11 +41,15 @@ def main():
     # Generate the vault content
     vault_content = "VAULT_START\n"
     for filename, password in entries:
-        vault_content += f'<div class="vault-entry" style="background: #2a2a2a; padding: 0.5rem; margin: 0.5rem 0; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">'
-        vault_content += f'<span style="font-family: monospace;">{filename}</span>'
-        vault_content += f'<div><span style="margin-right: 1rem; font-family: monospace; color: #f4c6c2;">{password}</span>'
-        vault_content += f'<button class="copy-btn" data-password="{password}" style="background: #3a3a3a; border: none; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; cursor: pointer;">Copy</button></div>'
-        vault_content += '</div>\n'
+        vault_content += (
+            f'<div class="vault-entry">'
+            f'  <span class="entry-name">{filename}</span>'
+            f'  <div class="entry-row">'
+            f'    <span class="entry-pass" data-password="{password}">{password}</span>'
+            f'    <button class="copy-btn" data-password="{password}">Copy</button>'
+            f'  </div>'
+            f'</div>\n'
+        )
     vault_content += "VAULT_END"
 
     # Encrypt and save

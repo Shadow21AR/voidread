@@ -524,3 +524,115 @@ pre code[class^="language-"] {
   font-weight: bold;
   margin-top: 0.5rem;
 }
+
+.vault-entry {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background-color: $base02;
+  border: 1px solid $base01;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-family: $global-font-family;
+  color: $text-color;
+  gap: 0.4rem;
+  word-break: break-word;
+
+  .entry-name {
+    font-weight: bold;
+    color: $header-text-color;
+    flex: 1 1 100%;
+  }
+  .entry-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .entry-pass {
+    background: #1e1e1e;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    flex: 1 1 auto;
+    display: inline-block;
+
+    &:hover {
+      background-color: lighten($code-block-bg, 5%);
+    }
+  }
+
+  .copy-btn {
+    background: #3a3a3a;
+    color: #f4c6c2;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: lighten($base01, 5%);
+      color: $link-color-hover;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .copy-btn {
+      display: none;
+    }
+  }
+}
+
+.vault-wrapper {
+  background-color: $base01;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vault-title {
+  margin: 0 0 1.5rem;
+  color: $primary-color; // #f4c6c2
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $border-color;
+  font-size: $h-size-2; // ~1.6em
+  font-family: $header-font-family;
+}
+
+.vault-scroll {
+  margin-top: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: $base03 transparent;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $base03; // muted scrollbar
+    border-radius: 3px;
+  }
+}

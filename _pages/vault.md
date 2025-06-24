@@ -85,32 +85,42 @@ async function unlockVault() {
         // Extract and display the content
         const vaultContent = decryptedText.split('VAULT_START')[1].split('VAULT_END')[0];
         content.innerHTML = `
-            <div style="background: #2a2a2a; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                <h2 style="margin: 0 0 1.5rem; color: #f4c6c2; padding-bottom: 0.5rem; border-bottom: 1px solid #444; font-size: 1.5rem;">
-                    Locked Posts
-                </h2>
-                <div style="margin-top: 1rem; max-height: 70vh; overflow-y: auto; padding-right: 0.5rem;">
-                    ${vaultContent}
-                </div>
+            <div class="vault-wrapper">
+            <h2 class="vault-title">Locked Posts</h2>
+            <div class="vault-scroll">
+                ${vaultContent}
+            </div>
             </div>
         `;
         content.style.display = 'block';
         status.textContent = '';
         
-        // Add copy functionality
+        document.querySelectorAll('.entry-pass').forEach(el => {
+        el.addEventListener('click', function () {
+            const text = this.getAttribute('data-password');
+            navigator.clipboard.writeText(text).then(() => {
+            const original = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = text;
+            }, 1500);
+            }).catch(err => console.error('Clipboard error:', err));
+        });
+        });
+
         document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.onclick = function() {
-                const text = this.getAttribute('data-password');
-                navigator.clipboard.writeText(text).then(() => {
-                    const original = this.textContent;
-                    this.textContent = 'Copied!';
-                    this.style.background = '#4CAF50';
-                    setTimeout(() => {
-                        this.textContent = original;
-                        this.style.background = '#3a3a3a';
-                    }, 2000);
-                });
-            };
+        btn.addEventListener('click', function () {
+            const text = this.getAttribute('data-password');
+            navigator.clipboard.writeText(text).then(() => {
+            const original = this.textContent;
+            this.textContent = 'Copied!';
+            this.style.background = '#4CAF50';
+            setTimeout(() => {
+                this.textContent = original;
+                this.style.background = '#3a3a3a';
+            }, 2000);
+            }).catch(err => console.error('Clipboard error:', err));
+        });
         });
         
     } catch (err) {
