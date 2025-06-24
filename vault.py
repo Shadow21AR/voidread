@@ -28,7 +28,7 @@ def main():
 
     master_password = sys.argv[1]
     index_file = Path("_locked/.locked_index")
-    output_file = Path("_pages/vault_data.enc")
+    output_file = Path("assets/locked/vault_data.enc")
     
     if not index_file.exists():
         print("Error: .locked_index file not found")

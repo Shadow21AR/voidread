@@ -44,7 +44,8 @@ async function unlockVault() {
     }
 
     try {
-        const response = await fetch('/_pages/vault_data.enc');
+        const response = await fetch('{{ "/assets/locked/vault_data.enc" | relative_url }}');
+        
         const encryptedData = await response.text();
         
         // Parse the encrypted data
