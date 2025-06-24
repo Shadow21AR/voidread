@@ -1,0 +1,73 @@
+h1,
+h2,
+h3 {
+    color: $h-color;
+}
+
+h4,
+h5,
+h6,
+.page__title,
+.page__title a,
+.page__title a:hover,
+.page__title a:active,
+.page__title a:focus,
+.page__title a:visited,
+.page__title a:link,
+.archive__item-title,
+.toc__title,
+.toc__list,
+.toc__list-item,
+.toc__list-link,
+.toc__list-link:hover,
+.toc__list-link:active,
+.toc__list-link:focus,
+.toc__list-link:visited,
+.toc__list-link:link {
+    color: $header-text-color;
+}
+
+p,
+a,
+li,
+ul,
+ol,
+dl,
+dt,
+dd,
+th,
+td,
+table,
+thead,
+tfoot,
+tbody {
+    color: $text-color;
+}
+
+ul,
+ol {
+    padding-left: 1.5em;
+}
+
+@media (max-width: 768px) {
+
+    ul,
+    ol {
+        padding-left: 1em;
+    }
+
+    ul ul,
+    ul ul ul,
+    ol ol,
+    ol ol ol {
+        padding-left: 0.75em;
+    }
+}
+
+.page__content {
+    background-color: $background-color;
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}

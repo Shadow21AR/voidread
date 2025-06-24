@@ -1,0 +1,16 @@
+body {
+  background-color: $background-color;
+  background-image: url(#{$texture-url});
+  background-repeat: repeat;
+  background-size: 600px 600px;
+}
+
+::selection {
+  background-color: lighten($primary-color, 15%);
+  color: $background-color;
+}
+
+::-moz-selection {
+  background-color: lighten($primary-color, 15%);
+  color: $background-color;
+}

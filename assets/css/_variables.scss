@@ -1,0 +1,76 @@
+// === BASE COLORS ===
+$background-color: #1f1f2a; // deep slate violet
+$footer-background-color: transparent;
+
+$border-color: #2b2a3a; // subtle border tone
+
+$text-color: #e2e0e8; // soft off-white (main text)
+$muted-text-color: #a59db5; // faded violet-gray
+$header-text-color: #fdf4f3; // near-white for headers
+$h-color: #f5c0c0; //header colors
+
+// === LINK COLORS ===
+$primary-color: #f4c6c2; // pale rose (used in accents too)
+$link-color: #f4c6c2;
+$link-color-hover: #ffe9e6; // lighter for hover feedback
+
+// === CODE BLOCKS ===
+$code-background-color: #3b2f35;
+$code-text-color: #f4c6c2;
+
+$code-block-bg: #3b2f35; // muted plum-mauve
+$code-block-text: #f4c6c2; // pastel pink
+$code-block-border: #5e464c; // gentle rose-gray edge
+$code-block-shadow: rgba(0, 0, 0, 0.3);
+
+// === BASE16-LIKE THEME MAP ===
+$base00: #1f1f2a; // main bg
+$base01: #2b2a3a; // panel/bg border
+$base02: #3b2f35; // code bg
+$base03: #5c546b; // muted comment text
+$base04: #a59db5; // subtle body text
+$base05: #e2e0e8; // primary readable
+$base06: #fdf4f3; // header text
+$base07: #ffffff; // pure white (rare)
+
+$base08: #f87171; // red - errors
+$base09: #f4c6c2; // rose - numbers/accent
+$base0a: #ffe9e6; // soft highlight (strings)
+$base0b: #d8a657; // amber - booleans
+$base0c: #b2554c; // rust - alerts
+$base0d: #c4b3ff; // lavender - functions
+$base0e: #f5c0c0; // pink - classes
+$base0f: #e879f9; // magenta - edge/inline
+
+// === TYPOGRAPHY ===
+$global-font-family: 'Cinetype', sans-serif;
+$header-font-family: 'PP Formula', sans-serif;
+
+$doc-font-size: 16px;
+$doc-font-size-medium: 18px;
+$doc-font-size-large: 20px;
+$doc-font-size-x-large: 22px;
+
+$paragraph-indent: false;
+$indent-var: 0.5em;
+
+$type-size-1: 2em;
+$type-size-2: 1.6em;
+$type-size-3: 1.35em;
+$type-size-4: 1.15em;
+$type-size-5: 1.05em;
+$type-size-6: 0.95em;
+$type-size-7: 0.85em;
+$type-size-8: 0.75em;
+
+$h-size-1: 1.85em;
+$h-size-2: 1.6em;
+$h-size-3: 1.4em;
+$h-size-4: 1.2em;
+$h-size-5: 1.1em;
+$h-size-6: 1em;
+
+// === ALERT COLORS ===
+$info-color: #5b8ea9;
+$warning-color: #d8a657;
+$danger-color: #b2554c;

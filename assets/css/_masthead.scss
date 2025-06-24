@@ -1,0 +1,117 @@
+.masthead {
+    position: relative;
+    border-bottom: 1px solid $border-color;
+    -webkit-animation: $intro-transition;
+    animation: $intro-transition;
+    -webkit-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+    z-index: 20;
+
+    &__inner-wrap {
+        @include clearfix;
+        margin-inline: auto;
+        padding: 1em;
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-family: $sans-serif-narrow;
+
+        @include breakpoint($x-large) {
+            max-width: $max-width;
+        }
+
+        nav {
+            z-index: 10;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+    }
+}
+
+.site-logo img {
+    max-height: 2rem;
+}
+
+.site-title {
+    display: flex;
+    align-self: center;
+    font-weight: bold;
+}
+
+.site-subtitle {
+    display: block;
+    font-size: $type-size-8;
+}
+
+.masthead__menu {
+    float: inline-start;
+    margin-inline: 0;
+    width: 100%;
+    clear: both;
+
+    .site-nav {
+        margin-inline-start: 0;
+
+        @include breakpoint($small) {
+            float: inline-end;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        clear: both;
+        list-style-type: none;
+    }
+}
+
+// Styled like post cards
+.masthead__menu-item {
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    margin: 0 0.4rem;
+    border: 1px solid rgba($primary-color, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0.7rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border: 1px solid rgba($primary-color, 0.4);
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    &:hover::after {
+        opacity: 1;
+        box-shadow: 0 0 6px rgba($primary-color, 0.3);
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    a {
+        color: $text-color;
+        text-decoration: none !important;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $link-color-hover;
+            text-decoration: none !important;
+        }
+    }
+
+    &--lg {
+        padding-inline-end: 2em;
+        font-weight: 700;
+    }
+}

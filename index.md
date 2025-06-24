@@ -27,12 +27,3 @@ permalink: /
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   document.getElementById("quote-box").textContent = `${quote}`;
 </script>
----
-Welcome to **Voidread** — a place where knowledge grows, ideas take shape, and mysteries unfold.
-
-### 🔍 Explore:
-- 🐧 [Linux]({{ '/linux/' | relative_url }}) — For linux related posts.
-- 🪟 [Windows]({{ '/windows/' | relative_url }}) — For windows related posts.
-- 🧠 [AD Mindmap]({{ '/ad-mindmap/' | relative_url }}) — Your full reference to Active Directory.
-
----

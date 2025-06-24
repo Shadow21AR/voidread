@@ -121,3 +121,7 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/shadow21ar"
+
+sass:
+  sass_dir: assets/css
+
