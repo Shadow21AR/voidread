@@ -72,11 +72,12 @@
     display: block;
     white-space: nowrap;
     position: relative;
-    margin: 0 0.4rem;
-    border: 1px solid rgba($primary-color, 0.2);
-    border-radius: 8px;
+    margin: 0 0.5rem;
+    background-color: rgba($background-color, 0.5);
+    border: 1px solid rgba($primary-color, 0.5);
+    border-radius: 5px;
     transition: all 0.3s ease;
-    padding: 0.3rem 0.7rem;
+    padding: 0.25rem 0.6rem;
 
     &::after {
         content: "";
@@ -114,4 +115,9 @@
         padding-inline-end: 2em;
         font-weight: 700;
     }
+}
+
+#site-nav {
+    background-color: transparent !important; // force override if needed
+    box-shadow: none;
 }
