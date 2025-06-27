@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'PP Formula';
-    src: url("/assets/fonts/formula/PP-Formula-ExtraBold.woff2") format("woff2"),
-        url("/assets/fonts/formula/PP-Formula-SemiExtendedBold.woff2") format("woff");
+    src: url("{{'/assets/fonts/formula/PP-Formula-ExtraBold.woff2' | relative_url}}") format("woff2"),
+        url("{{'/assets/fonts/formula/PP-Formula-SemiExtendedBold.woff2' | relative_url}}") format("woff");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -9,10 +9,10 @@
 
 @font-face {
     font-family: 'Cinetype';
-    src: url("/assets/fonts/cinetype/GT-Cinetype-Bold.woff2") format("woff2"),
-        url("/assets/fonts/cinetype/GT-Cinetype-Light.woff2") format("woff2"),
-        url("/assets/fonts/cinetype/GT-Cinetype-Mono.woff2") format("woff2"),
-        url("/assets/fonts/cinetype/GT-Cinetype-Regular.woff2") format("woff2");
+    src: url("{{'/assets/fonts/cinetype/GT-Cinetype-Bold.woff2' | relative_url}}") format("woff2"),
+        url("{{'/assets/fonts/cinetype/GT-Cinetype-Light.woff2' | relative_url}}") format("woff2"),
+        url("{{'/assets/fonts/cinetype/GT-Cinetype-Mono.woff2' | relative_url}}") format("woff2"),
+        url("{{'/assets/fonts/cinetype/GT-Cinetype-Regular.woff2' | relative_url}}") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: fallback;
