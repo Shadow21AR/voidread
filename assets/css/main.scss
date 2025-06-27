@@ -1,6 +1,7 @@
 ---
 # custom theme
 ---
+@charset "UTF-8";
 
 $texture-url: "{{ '/assets/images/bg.svg' | relative_url }}";
 $pp-formula-extrabold: "{{'/assets/fonts/formula/PP-Formula-ExtraBold.woff2' | relative_url}}"; 
