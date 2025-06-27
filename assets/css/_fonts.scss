@@ -1,7 +1,14 @@
 @font-face {
     font-family: 'PP Formula';
-    src: url(#{pp-formula-extrabold}) format("woff2"),
-    url(#{pp-formula-semiextendedbold}) format("woff");
+    src: url(#{$pp-formula-extrabold}) format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Formula';
+    src: url(#{$pp-formula-semiextendedbold}) format("woff2");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -9,11 +16,32 @@
 
 @font-face {
     font-family: 'Cinetype';
-    src: url(#{cinetype-bold}) format("woff2"),
-    url(#{cinetype-light}) format("woff2"),
-    url(#{cinetype-mono}) format("woff2"),
-    url(#{cinetype-regular}) format("woff2");
+    src: url(#{$cinetype-bold}) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cinetype';
+    src: url(#{$cinetype-light}) format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cinetype';
+    src: url(#{$cinetype-regular}) format("woff2");
     font-weight: 400;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cinetype Mono';
+    src: url(#{$cinetype-mono}) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
