@@ -125,5 +125,7 @@ footer:
       url: "https://github.com/shadow21ar"
 
 sass:
+  style: compressed
+  sourcemap: never
   sass_dir: assets/css
 
