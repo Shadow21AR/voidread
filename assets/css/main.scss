@@ -16,3 +16,4 @@ $texture-url: "{{ '/assets/images/bg.svg' | relative_url }}";
 @import "footer";
 @import "vault";
 @import "alerts";
+@import "filter-control"

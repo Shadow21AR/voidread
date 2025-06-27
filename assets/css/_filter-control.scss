@@ -1,0 +1,31 @@
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $indent-var;
+    margin-bottom: 1.5rem;
+
+    .filter-btn {
+        padding: 0.3em 0.8em;
+        font-family: $global-font-family;
+        font-size: $type-size-5;
+        color: $muted-text-color;
+        background-color: $base01;
+        border: 1px solid $border-color;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: darken($base01, 5%);
+            color: $text-color;
+            border-color: lighten($border-color, 5%);
+        }
+
+        &.active {
+            background-color: $base0e;
+            color: $base00;
+            border-color: lighten($base0e, 10%);
+            font-weight: 600;
+        }
+    }
+}

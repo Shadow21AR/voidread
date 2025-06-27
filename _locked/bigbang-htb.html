@@ -1,6 +1,6 @@
 ---
 layout: splash
-permalink: /locked/sorcery.html
+permalink: /locked/bigbang-htb.html
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
@@ -13,6 +13,7 @@ permalink: /locked/sorcery.html
   <input id="pw" type="password" placeholder="Enter password" class="unlock-input" autofocus />
   <button class="unlock-button" onclick="decrypt()">Unlock</button>
 </div>
+
 <p id="status" class="unlock-error"></p>
 <hr>
 <div id="content"></div>
@@ -29,7 +30,7 @@ async function decrypt() {
   const wrongPasswordMessages = ["The incantation falters. Try again, Beyonder.","The seal remains unbroken. The key is not right.","Your spirit wavers. That is not the true name.","Reality rejects your attempt. Perhaps a different Sequence?","The door to the fog remains shut."];
 
     try {
-    const res = await fetch("sorcery.enc");
+    const res = await fetch("bigbang-htb.enc");
     const b64 = await res.text();
 
     const raw = atob(b64);

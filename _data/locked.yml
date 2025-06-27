@@ -1,4 +1,48 @@
-- title: Sorcery
-  description: An Insane level HTB Box for Season 8
-- title: Artificial
-  description: An Easy level HTB Box for Season 8
+- title: Artificial - HTB
+  description: An Easy-rated HTB box exploiting TensorFlow deserialization RCE to
+    gain initial access, followed by backup abuse, password cracking, and Restic misconfig
+    for full root compromise.
+  locked: true
+- title: BigBang - HTB
+  description: Exploitation of a WordPress and Grafana setup via leaked credentials,
+    JWT abuse on a custom APK API, and command injection in a vulnerable /send-image
+    endpoint to gain root access.
+  locked: true
+- title: Certificate - HTB
+  description: Web-to-root HTB box featuring a ZIP upload bypass with null-byte injection,
+    credential harvesting, shadow credential attack, AD CS exploitation via SeManageVolume
+    abuse, and full domain takeover through forged certificates.
+  locked: true
+- title: Environment HTB
+  description: Initial foothold via broken remember-me parameter, preprod environment
+    bypass, PHP webshell upload, GPG decryption for credentials, and privesc through
+    sudo BASH_ENV bypass.
+  locked: true
+- title: Fluffy - HTB
+  description: Initial access via SMB creds, BloodHound enumeration, NTLMv2 cracking,
+    shadow credentials, and Administrator via certificate abuse.
+  locked: true
+- title: Planning - HTB
+  description: Initial access via admin credentials, exploit of vulnerable Grafana
+    service, enumeration of Docker and environment variables for credentials, privilege
+    escalation via crontab and SUID shell.
+  locked: true
+- title: Sorcery -HTB
+  description: "A brutal, multi-layered HTB box featuring Cypher injection, Docker\
+    \ abuse, custom CA phishing, Kafka RCE, and FreeIPA misconfigurations\u2014culminating\
+    \ in full domain compromise."
+  locked: true
+- title: Tombwatcher - HTB
+  description: Initial access with user credentials, SPN abuse via targetedKerberoast,
+    GMSA password read, cross-user escalation, account takeover, and final domain
+    compromise through restored cert_admin and Certificate Request Agent abuse.
+  locked: true
+- title: WhiteRabbit - HTB
+  description: Full walkthrough of WhiteRabbit HTB box involving vhost enumeration,
+    SQLi via HMAC signature spoofing, restic backup abuse, reverse engineering a password
+    generator, and privilege escalation to root.
+  locked: true
+- title: Puppy - HTB
+  description: Active Directory attack chain on Puppy involving BloodHound analysis,
+    GenericWrite abuse, KeePass file cracking, and credential manager extraction
+  locked: true

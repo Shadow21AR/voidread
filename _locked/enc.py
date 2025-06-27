@@ -42,7 +42,7 @@ def extract_frontmatter(md_text):
             frontmatter[key.strip()] = value.strip().strip('"').strip("'")
     return frontmatter
 
-def write_decryptor_html(slug, enc_filename):
+def write_decryptor_html(slug, enc_filename, plain_password=None):
     html_path = os.path.join(LOCKED_DIR, f"{slug}.html")
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(f"""---
@@ -60,6 +60,7 @@ permalink: /locked/{slug}.html
   <input id="pw" type="password" placeholder="Enter password" class="unlock-input" autofocus />
   <button class="unlock-button" onclick="decrypt()">Unlock</button>
 </div>
+{f'<p class="unlock-note">Password: <code>{plain_password}</code></p>' if plain_password else ''}
 <p id="status" class="unlock-error"></p>
 <hr>
 <div id="content"></div>
@@ -154,15 +155,16 @@ def process_locked():
                     fname, pwd = line.strip().split(":", 1)
                     existing[fname] = pwd
 
-    for file in os.listdir(LOCKED_DIR):
+    for file in os.listdir(os.path.join(LOCKED_DIR, "src")):
         if file.endswith(".md"):
-            path = os.path.join(LOCKED_DIR, file)
+            path = os.path.join(LOCKED_DIR, "src", file)
             with open(path, "r", encoding="utf-8") as f:
                 plaintext = f.read()
 
             front = extract_frontmatter(plaintext)
             title = front.get("title", file.replace(".md", ""))
             description = front.get("description", "")
+            locked = front.get("locked", "true").lower() != "false"
             slug = slugify(title)
 
             if file in existing:
@@ -179,11 +181,13 @@ def process_locked():
             with open(enc_path, "w", encoding="utf-8") as f:
                 f.write(encrypted)
 
-            write_decryptor_html(slug, f"{slug}.enc")
+            # write_decryptor_html(slug, f"{slug}.enc")
+            write_decryptor_html(slug, f"{slug}.enc", password if not locked else None)
 
             metadata.append({
                 "title": title,
-                "description": description
+                "description": description,
+                "locked": locked
             })
 
             print(f"{file} → {slug}.enc + {slug}.html")
