@@ -61,8 +61,11 @@ defaults:
       css: "/assets/css/main.scss"
 
 # Markdown and theme
+encoding: utf-8
 markdown: kramdown
 kramdown:
+  input: GFM
+  hard_wrap: false
   syntax_highlighter_opts:
     span:
       class: highlight
