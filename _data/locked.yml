@@ -46,3 +46,9 @@
   description: Active Directory attack chain on Puppy involving BloodHound analysis,
     GenericWrite abuse, KeePass file cracking, and credential manager extraction
   locked: true
+- title: Rusty Key - HTB
+  description: Full Active Directory exploitation on Rusty Key from initial access
+    to domain admin. Includes SPN cracking, AddSelf abuse, group removals from Protected
+    Objects, password resets via bloodyAD, DLL hijack via writable CLSID, and final
+    ESC8 attack for Administrator access.
+  locked: true
