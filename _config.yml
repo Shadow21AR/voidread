@@ -6,6 +6,7 @@ description: >-
 
 url: "https://voidread.pages.dev"
 baseurl: ""
+og_image: "assets/images/eye.png"
 
 github_username: shadow21ar
 minimal_mistakes_skin: "dirt"
