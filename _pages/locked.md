@@ -36,10 +36,8 @@ author: "sado"
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const filter = btn.dataset.filter;
-    
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    
     document.querySelectorAll('.post-card').forEach(card => {
       const status = card.dataset.status === 'false' ? 'open' : 'locked';
       card.style.display = (filter === 'all' || filter === status) ? 'block' : 'none';

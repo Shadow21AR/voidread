@@ -103,3 +103,17 @@
     box-shadow: 0 0 6px rgba($base0b, 0.25);
     border-color: rgba($base0b, 0.3);
 }
+
+.badge-linux {
+    background-color: rgba($base0a, 0.1); // soft yellow for Linux
+    color: $base0a;
+    box-shadow: 0 0 6px rgba($base0a, 0.25);
+    border-color: rgba($base0a, 0.3);
+}
+
+.badge-windows {
+    background-color: rgba($base0d, 0.1); // soft blue for Windows
+    color: $base0d;
+    box-shadow: 0 0 6px rgba($base0d, 0.25);
+    border-color: rgba($base0d, 0.3);
+}

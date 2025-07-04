@@ -1,6 +1,6 @@
 # Voidread
 
-Visit the live site: [voidread](https://shadow21ar.github.io/voidread/)
+Visit the live site: [voidread](https://voidread.pages.dev)
 
 A personal knowledge base and blog focused on cybersecurity, penetration testing, and offensive security research.
 

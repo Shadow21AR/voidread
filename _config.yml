@@ -1,9 +1,11 @@
 title: VOIDREAD
 email:
 description: >-
-  Welcome to my digital diary of tech tomfoolery and cybersecurity shenanigans! Here you'll find tales of my coding capers, from 'sudo make me a sandwich' moments to 'why is this working in dev but not in prod?' mysteries. I write about cybersecurity because I like to break things (ethically, of course), Linux because I enjoy pain, and random tech stuff because I can't help myself.
-  No, I won't fix your printer (seriously, have you tried turning it off and on again?). Yes, I do Google error messages before I try anything else. No, I don't know why your internet is down (but it's probably DNS).
-  Join me as I navigate the wild world of technology, one segfault at a time. May your code compile on the first try and your coffee never go cold. P.S. If you're my mom, yes, I'm a 'computer genius' but no, I can't recover those family photos from 2007.
+  Welcome to my digital diary of tech tomfoolery and cybersecurity shenanigans! Here you'll find tales of my coding capers, from 'sudo make me a sandwich' moments to 'why is this working in dev but not in prod?' mysteries. I write about cybersecurity because I like to break things (ethically, of course), and random tech stuff because I can't help myself.
+  No, I won't fix your printer (seriously, have you tried turning it off and on again?).
+
+url: "https://voidread.pages.dev"
+baseurl: ""
 
 github_username: shadow21ar
 minimal_mistakes_skin: "dirt"
@@ -116,7 +118,7 @@ author:
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://shadow21ar.github.io/voidread"
+      url: "https://voidread.pages.dev"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/shadow21ar"
