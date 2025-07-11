@@ -52,3 +52,6 @@
     SQLi via HMAC signature spoofing, restic backup abuse, reverse engineering a password
     generator, and privilege escalation to root.
   locked: true
+- title: Voleur - HTB
+  description: Full Domain Compromise via DPAPI Credential Theft and AD Dump
+  locked: true
