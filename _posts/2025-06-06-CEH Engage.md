@@ -367,7 +367,7 @@ Conduct a footprinting analysis on the target website www.certifiedhacker.com to
 Answer: `Apache`
 
 ### Challenge 5:
-You’re a cybersecurity investigator assigned to a high-priority case. Martin is suspected of engaging in illegal crypto activities, and it’s believed that he has stored his crypto account password in a file named $ollers.txt. Your mission is to crack the SSH credentials for Martin’s machine within the 192.168.10.0/24 subnet and retrieve the password from the $ollers.txt file. (Hint: Search in the folders present on the Desktop to find the target file) *(Format: `aNaa**NNNNNAA*`)*{: .highlight}
+You’re a cybersecurity investigator assigned to a high-priority case. Martin is suspected of engaging in illegal crypto activities, and it’s believed that he has stored his crypto account password in a file named `$ollers.txt`. Your mission is to crack the SSH credentials for Martin’s machine within the 192.168.10.0/24 subnet and retrieve the password from the $ollers.txt file. (Hint: Search in the folders present on the Desktop to find the target file) *(Format: `aNaa**NNNNNAA*`)*{: .highlight}
 ```bash
 - nmap -p 22 192.168.10.0/24 --open
 - hydra -l Martin -P password.txt 192.168.10.101
