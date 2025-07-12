@@ -55,3 +55,7 @@
 - title: Voleur - HTB
   description: Full Domain Compromise via DPAPI Credential Theft and AD Dump
   locked: true
+- title: Outbound - HTB
+  description: nitial foothold via Roundcube exploit, user access through decrypted
+    IMAP creds, and root via sudo misconfiguration in below.
+  locked: true
