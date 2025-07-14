@@ -1,6 +1,8 @@
 _site
 .sass-cache
 .jekyll-metadata
+.jekyll-cache
+.github
 .vscode
 _locked/src/*.md
 _locked/.locked_index
