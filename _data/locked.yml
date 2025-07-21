@@ -23,7 +23,8 @@
     shadow credentials, and Administrator via certificate abuse.
   locked: true
 - title: Mirage - HTB
-  description: ''
+  description: Windows AD lab with misconfigurations across DNS, LDAP, and certificate
+    services, leading to full domain compromise.
   locked: true
 - title: Outbound - HTB
   description: nitial foothold via Roundcube exploit, user access through decrypted
