@@ -7,7 +7,7 @@
   description: Exploitation of a WordPress and Grafana setup via leaked credentials,
     JWT abuse on a custom APK API, and command injection in a vulnerable /send-image
     endpoint to gain root access.
-  locked: true
+  locked: false
 - title: Certificate - HTB
   description: Web-to-root HTB box featuring a ZIP upload bypass with null-byte injection,
     credential harvesting, shadow credential attack, AD CS exploitation via SeManageVolume
@@ -21,6 +21,13 @@
 - title: Fluffy - HTB
   description: Initial access via SMB creds, BloodHound enumeration, NTLMv2 cracking,
     shadow credentials, and Administrator via certificate abuse.
+  locked: true
+- title: Mirage - HTB
+  description: ''
+  locked: true
+- title: Outbound - HTB
+  description: nitial foothold via Roundcube exploit, user access through decrypted
+    IMAP creds, and root via sudo misconfiguration in below.
   locked: true
 - title: Planning - HTB
   description: Initial access via admin credentials, exploit of vulnerable Grafana
@@ -47,15 +54,11 @@
     GMSA password read, cross-user escalation, account takeover, and final domain
     compromise through restored cert_admin and Certificate Request Agent abuse.
   locked: true
+- title: Voleur - HTB
+  description: Full Domain Compromise via DPAPI Credential Theft and AD Dump
+  locked: true
 - title: WhiteRabbit - HTB
   description: Full walkthrough of WhiteRabbit HTB box involving vhost enumeration,
     SQLi via HMAC signature spoofing, restic backup abuse, reverse engineering a password
     generator, and privilege escalation to root.
-  locked: true
-- title: Voleur - HTB
-  description: Full Domain Compromise via DPAPI Credential Theft and AD Dump
-  locked: true
-- title: Outbound - HTB
-  description: nitial foothold via Roundcube exploit, user access through decrypted
-    IMAP creds, and root via sudo misconfiguration in below.
   locked: true
